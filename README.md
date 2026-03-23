@@ -1,6 +1,6 @@
 # OpTrack – Smart Opportunity Intelligence for Students
 
-## 📌 Overview
+## Overview
 OpTrack is a web-based application designed to help students discover and **prioritize opportunities** such as internships, hackathons, and scholarships.
 
 Unlike traditional platforms, OpTrack focuses on **decision-making**, enabling users to identify the most relevant opportunities based on their skills, deadlines, and preferences.
@@ -50,7 +50,7 @@ Users can bookmark opportunities using local storage.
 ### Dark Mode
 Toggle between light and dark themes.
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **HTML** – Structure
 - **CSS / Tailwind** – Styling
 - **JavaScript (ES6)** – Logic and interactivity
