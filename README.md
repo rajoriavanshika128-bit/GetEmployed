@@ -1,13 +1,13 @@
-# 🚀 GetEmployed – Opportunity Intelligence Platform for Students
+# GetEmployed – Opportunity Intelligence Platform for Students
 
-## 📌 Overview
+## Overview
 GetEmployed is a smart web-based application designed to help students discover, analyze, and prioritize job and internship opportunities.
 
 Unlike traditional platforms that only display listings, GetEmployed focuses on **decision-making intelligence**. It helps users identify the most relevant opportunities based on their skills, salary insights, and urgency, enabling smarter and faster application decisions.
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 Students often struggle with:
 - Finding relevant job or internship opportunities
 - Evaluating which opportunities are worth applying for
@@ -20,7 +20,7 @@ This results in:
 
 ---
 
-## 💡 Solution
+## Solution
 GetEmployed transforms opportunity discovery into an **intelligent decision-making process** by:
 
 - Aggregating real-time job data from a public API  
@@ -30,28 +30,28 @@ GetEmployed transforms opportunity discovery into an **intelligent decision-maki
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 ### 🔍 Smart Search
 Search opportunities by job title, company, or keywords.
 
 ---
 
-### 🎯 Advanced Filtering
+### Advanced Filtering
 - Filter by job category (Tech, Marketing, etc.)
 - Filter by salary range
 - Filter based on relevance
 
 ---
 
-### 📊 Sorting System
+### Sorting System
 - Sort by salary (high → low)
 - Sort alphabetically
 - Sort by relevance score
 
 ---
 
-### 🧠 Match Score (Core Feature)
+### Match Score (Core Feature)
 A custom scoring system that ranks opportunities based on:
 - Skill match  
 - Category preference  
@@ -61,7 +61,7 @@ This helps users quickly identify **best-fit opportunities**.
 
 ---
 
-### ⏳ Smart Deadline Indicator
+### Smart Deadline Indicator
 Since most APIs do not provide deadlines, GetEmployed introduces a **simulated urgency system**:
 - 🔴 Urgent (closing soon)  
 - 🟡 Moderate  
@@ -69,22 +69,22 @@ Since most APIs do not provide deadlines, GetEmployed introduces a **simulated u
 
 ---
 
-### ⭐ Save Opportunities
+### Save Opportunities
 Users can bookmark jobs using **localStorage** for later access.
 
 ---
 
-### 🌙 Dark Mode
+### Dark Mode
 Toggle between light and dark themes for better user experience.
 
 ---
 
-### 🚀 Top Picks (Highlight Feature)
+### Top Picks (Highlight Feature)
 Displays the most relevant opportunities based on highest match scores.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **HTML** – Structure  
 - **CSS / Tailwind CSS** – Styling & responsive UI  
@@ -94,7 +94,7 @@ Displays the most relevant opportunities based on highest match scores.
 
 ---
 
-## 🌐 API Used
+## API Used
 
 ### Adzuna Jobs API  
 https://developer.adzuna.com/
@@ -111,8 +111,8 @@ This enables efficient implementation of search, filtering, and sorting features
 
 ---
 
-## ⚙️ Setup and Run
+## Setup and Run
 
-### 1️⃣ Clone the repository
+### Clone the repository
 ```bash
 git clone https://github.com/rajoriavanshika128-bit/OpTrack.git
