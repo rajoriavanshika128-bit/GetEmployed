@@ -1,4 +1,4 @@
-# GetEmployed – Opportunity Intelligence Platform for Students
+ # GetEmployed – Opportunity Intelligence Platform for Students
 
 ## Overview
 GetEmployed is a smart web-based application designed to help students discover, analyze, and prioritize job and internship opportunities.

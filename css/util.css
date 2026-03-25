@@ -1,0 +1,8 @@
+
+
+.stat-numrow {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    justify-content: center;
+}
