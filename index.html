@@ -8,12 +8,11 @@
     <meta name="description"
         content="GetEmployed — Opportunity Intelligence Platform for Students. Discover jobs, internships, and companies with live data." />
     <title>GetEmployed | Opportunity Intelligence for Students</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟥</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
 
-   
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 
     <link rel="stylesheet" href="css/style.css" />
@@ -24,27 +23,23 @@
 
 <body>
 
-   
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
 
-           
             <a href="index.html" class="nav-logo" id="nav-logo" aria-label="GetEmployed Home">
-                GET<span class="accent">EMPLOYED</span>
+                <span class="nav-logo-inner">GE</span>
             </a>
 
-         
             <ul class="nav-links" id="nav-links" role="list">
                 <li><a href="#opportunities" class="nav-link" id="nav-opportunities">Opportunities</a></li>
                 <li><a href="#saved" class="nav-link" id="nav-saved">Saved</a></li>
                 <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
             </ul>
 
-           
             <div class="nav-controls">
-               
+
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
-                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"
                         stroke-linejoin="miter" aria-hidden="true">
                         <circle cx="12" cy="12" r="5" />
@@ -57,14 +52,13 @@
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                     </svg>
-                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"
                         stroke-linejoin="miter" aria-hidden="true">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                     </svg>
                 </button>
 
-                
                 <button class="hamburger" id="hamburger" aria-label="Open mobile menu" aria-expanded="false"
                     aria-controls="mobile-menu">
                     <span class="ham-line"></span>
@@ -74,7 +68,6 @@
             </div>
         </div>
 
-      
         <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
             <ul class="mobile-links" role="list">
                 <li><a href="#opportunities" class="mobile-link" id="mob-opportunities">Opportunities</a></li>
@@ -84,81 +77,64 @@
         </div>
     </nav>
 
-   
     <section class="hero" id="hero" aria-labelledby="hero-heading">
 
-        
-        <div class="hero-grid" aria-hidden="true">
-            <div class="grid-lines horizontal" aria-hidden="true"></div>
-            <div class="grid-lines vertical" aria-hidden="true"></div>
-            <div class="diagonal-lines" aria-hidden="true"></div>
-            <div class="scan-line" aria-hidden="true"></div>
-            <div class="corner-accent top-left" aria-hidden="true"></div>
-            <div class="corner-accent top-right" aria-hidden="true"></div>
-            <div class="corner-accent bottom-left" aria-hidden="true"></div>
-            <div class="corner-accent bottom-right" aria-hidden="true"></div>
-           
-            <div class="float-dot dot-1" aria-hidden="true"></div>
-            <div class="float-dot dot-2" aria-hidden="true"></div>
-            <div class="float-dot dot-3" aria-hidden="true"></div>
-            <div class="float-dot dot-4" aria-hidden="true"></div>
-            <div class="float-dot dot-5" aria-hidden="true"></div>
-        </div>
+        <div class="hero-dark-overlay" aria-hidden="true"></div>
 
-       
-        <div class="hero-overlay" aria-hidden="true"></div>
+        <div aria-hidden="true" style="
+            position: absolute; inset: 0; z-index: 1; pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% -10%, rgba(137,170,204,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(78,133,191,0.06) 0%, transparent 60%);
+        "></div>
 
-       
+        <div class="hero-fade-bottom" aria-hidden="true"></div>
+
         <div class="hero-content">
-            <div class="hero-tag animate-in delay-0" aria-label="Platform label">
-                <span class="tag-line"></span>
-                <span class="tag-text">OPPORTUNITY INTELLIGENCE PLATFORM</span>
-                <span class="tag-line"></span>
+
+            <div class="hero-tag liquid-glass animate-in delay-0" aria-label="Platform label">
+                <span class="tag-badge-new">New</span>
+                <span class="tag-text">Opportunity Intelligence Platform</span>
             </div>
 
-            <h1 class="hero-heading animate-in delay-1" id="hero-heading" aria-label="FIND YOUR EDGE.">
-                <span class="word">
-                    <span class="letter" style="animation-delay: 0.1s">F</span><span class="letter" style="animation-delay: 0.15s">I</span><span class="letter" style="animation-delay: 0.2s">N</span><span class="letter" style="animation-delay: 0.25s">D</span>
+            <h1 class="hero-heading" id="hero-heading" aria-label="Find Your Edge.">
+                <span class="word" data-word>
+                    <span class="letter">F</span><span class="letter">i</span><span class="letter">n</span><span class="letter">d</span>
                 </span>
-                <span class="word" style="margin-left: 0.25em;">
-                    <span class="letter" style="animation-delay: 0.3s">Y</span><span class="letter" style="animation-delay: 0.35s">O</span><span class="letter" style="animation-delay: 0.4s">U</span><span class="letter" style="animation-delay: 0.45s">R</span>
+                <span class="word" style="margin-left: 0.2em;" data-word>
+                    <span class="letter">Y</span><span class="letter">o</span><span class="letter">u</span><span class="letter">r</span>
                 </span><br />
-                <span class="hero-accent word">
-                    <span class="letter" style="animation-delay: 0.5s">E</span><span class="letter" style="animation-delay: 0.55s">D</span><span class="letter" style="animation-delay: 0.6s">G</span><span class="letter" style="animation-delay: 0.65s">E</span><span class="letter" style="animation-delay: 0.7s">.</span>
+                <span class="hero-accent word" data-word>
+                    <span class="letter">E</span><span class="letter">d</span><span class="letter">g</span><span class="letter">e</span><span class="letter">.</span>
                 </span>
             </h1>
 
-            <p class="hero-sub animate-in delay-2">
+            <p class="hero-sub" id="hero-sub">
                 Opportunity Intelligence for Students
             </p>
 
-            <p class="hero-desc animate-in delay-3">
+            <p class="hero-desc" id="hero-desc">
                 Real-time jobs, internships &amp; company insights — curated for the next generation of professionals.
             </p>
 
-            <div class="hero-cta-wrap animate-in delay-4">
-                <a href="#opportunities" class="cta-btn" id="hero-cta" aria-label="Explore Opportunities">
-                    <span class="cta-inner">EXPLORE OPPORTUNITIES</span>
-                    <span class="cta-arrow" aria-hidden="true">&#8594;</span>
+            <div class="hero-cta-wrap">
+                <a href="#opportunities" class="cta-btn liquid-glass-strong" id="hero-cta" aria-label="Explore Opportunities">
+                    <span class="cta-inner">Explore Opportunities</span>
+                    <span class="cta-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a href="#about" class="cta-btn-ghost" id="hero-cta-ghost" aria-label="Learn More">
-                    LEARN MORE
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    Learn More
                 </a>
             </div>
-        </div>
+        </div>    </section>
 
-       
-        <div class="scroll-indicator animate-in delay-5" aria-hidden="true">
-            <div class="scroll-bar"></div>
-            <span>SCROLL</span>
-        </div>
-    </section>
-
-    
     <section class="stats-bar" id="stats-bar" aria-label="Platform statistics">
         <div class="stats-container">
 
-            <div class="stat-item animate-stat" id="stat-jobs">
+            <div class="stat-item animate-stat section-observe" id="stat-jobs">
                 <div class="stat-numrow">
                     <span class="stat-number" data-target="10000">0</span>
                     <span class="stat-suffix">+</span>
@@ -168,7 +144,7 @@
 
             <div class="stat-divider" aria-hidden="true"></div>
 
-            <div class="stat-item animate-stat" id="stat-companies">
+            <div class="stat-item animate-stat section-observe" id="stat-companies">
                 <div class="stat-numrow">
                     <span class="stat-number" data-target="500">0</span>
                     <span class="stat-suffix">+</span>
@@ -178,34 +154,33 @@
 
             <div class="stat-divider" aria-hidden="true"></div>
 
-            <div class="stat-item animate-stat" id="stat-data">
+            <div class="stat-item animate-stat section-observe" id="stat-data">
                 <span class="stat-live-dot" aria-hidden="true"></span>
-                <span class="stat-live-label">LIVE DATA</span>
+                <span class="stat-live-label">Live</span>
                 <span class="stat-label">Updated Every Hour</span>
             </div>
 
         </div>
     </section>
 
-   
     <section id="opportunities" class="opp-section" aria-labelledby="opp-heading">
 
-       
-        <div class="opp-section-header">
+        <div class="opp-section-header section-observe">
             <div class="opp-section-label">
-                <span class="section-num accent">01</span>
+                <span class="section-num">01</span>
                 <span class="section-slash">/</span>
                 <span class="section-name" style="display:flex;align-items:center;gap:12px;">
-                    OPPORTUNITIES
-                    <span class="live-badge" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,70,85,0.1);padding:4px 8px;border-radius:4px;font-size:0.7rem;letter-spacing:0.1em;border:1px solid rgba(255,70,85,0.2);"><span class="live-dot" style="width:6px;height:6px;background:#FF4655;border-radius:50%;box-shadow:0 0 8px #FF4655;animation:livePulse 2s infinite;"></span>LIVE</span>
+                    Opportunities
+                    <span class="live-badge">
+                        <span class="live-dot"></span>LIVE
+                    </span>
                 </span>
             </div>
-            <h2 class="opp-heading" id="opp-heading">FIND YOUR <span class="accent">NEXT MOVE</span></h2>
+            <h2 class="opp-heading" id="opp-heading">Find Your <em>Next Move</em></h2>
             <p class="opp-subtext">Browse thousands of live jobs, internships, and roles — filtered just for you.</p>
         </div>
 
-      
-        <div class="search-wrap" role="search">
+        <div class="search-wrap section-observe" role="search">
             <div class="search-bar" id="search-bar">
                 <svg class="search-icon-left" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"
@@ -217,24 +192,24 @@
                     placeholder="Search jobs, companies, or skills..." aria-label="Search opportunities"
                     autocomplete="off" />
                 <button class="search-btn" id="search-btn" aria-label="Submit search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
                         <circle cx="11" cy="11" r="8" />
                         <line x1="21" y1="21" x2="16.65" y2="16.65" />
                     </svg>
-                    <span>SEARCH</span>
+                    <span>Search</span>
                 </button>
             </div>
         </div>
 
-       
         <button class="filter-mob-btn" id="filter-mob-btn" aria-expanded="false" aria-controls="filter-bar">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
                 <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
             </svg>
-            FILTERS & SORT
+            Filters &amp; Sort
         </button>
+
         <div class="filter-bar" id="filter-bar" role="group" aria-label="Filter opportunities">
             <div class="filter-group">
                 <label class="filter-label" for="filter-category">Category</label>
@@ -289,12 +264,9 @@
                 </div>
             </div>
 
-            <button class="filter-reset" id="filter-reset" aria-label="Reset all filters">
-                ↺ RESET FILTERS
-            </button>
+            <button class="filter-reset" id="filter-reset" aria-label="Reset all filters">↺ Reset</button>
         </div>
 
-       
         <div class="results-meta">
             <span class="results-count" id="results-count" aria-live="polite">
                 Showing <strong id="results-num">24</strong> opportunities
@@ -323,13 +295,10 @@
             </div>
         </div>
 
-       
         <div class="opp-layout" id="opp-layout">
 
-          
             <aside class="opp-sidebar" id="opp-sidebar" aria-label="Sidebar">
 
-               
                 <div class="sidebar-card" id="sidebar-top-picks">
                     <div class="sidebar-card-header">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -337,7 +306,7 @@
                             <polygon
                                 points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                         </svg>
-                        <h3 class="sidebar-card-title">TOP PICKS</h3>
+                        <h3 class="sidebar-card-title">Top Picks</h3>
                     </div>
                     <ul class="top-picks-list" id="top-picks-list" aria-label="Top job picks">
                         <li class="top-pick-item">
@@ -382,14 +351,13 @@
                     </ul>
                 </div>
 
-    
                 <div class="sidebar-card" id="sidebar-saved">
                     <div class="sidebar-card-header">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
                             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                         </svg>
-                        <h3 class="sidebar-card-title">SAVED JOBS</h3>
+                        <h3 class="sidebar-card-title">Saved Jobs</h3>
                         <span class="saved-badge" id="saved-count" aria-label="3 saved jobs">3</span>
                     </div>
                     <p class="sidebar-empty-text" id="saved-empty-text">
@@ -398,9 +366,8 @@
                     </p>
                 </div>
 
-                
                 <div class="sidebar-card sidebar-card--accent" id="sidebar-quick-stat">
-                    <div class="qs-label">TRENDING SKILL</div>
+                    <div class="qs-label">Trending Skill</div>
                     <div class="qs-value">React.js</div>
                     <div class="qs-meta">Found in 2,340 listings this week</div>
                     <div class="qs-bar-wrap" aria-hidden="true">
@@ -410,10 +377,8 @@
 
             </aside>
 
-           
             <main class="opp-main" id="opp-main" aria-label="Job listings">
 
-                
                 <div class="cards-grid skeleton-grid" id="skeleton-grid" aria-label="Loading..." aria-busy="true">
                     <div class="skeleton-card" aria-hidden="true">
                         <div class="sk sk-logo"></div>
@@ -453,13 +418,11 @@
                     </div>
                 </div>
 
-               
                 <div class="cards-grid" id="cards-grid" aria-label="Job cards" hidden></div>
 
-                
                 <div class="load-more-wrap" id="load-more-wrap" hidden>
                     <button class="load-more-btn" id="load-more-btn" aria-label="Load more opportunities">
-                        LOAD MORE
+                        Load More
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
@@ -471,32 +434,29 @@
         </div>
     </section>
 
-
     <section id="saved" class="saved-section" aria-labelledby="saved-heading">
         <div class="saved-inner">
-            <div class="opp-section-label">
-                <span class="section-num accent">02</span>
+            <div class="opp-section-label section-observe">
+                <span class="section-num">02</span>
                 <span class="section-slash">/</span>
-                <span class="section-name">SAVED</span>
+                <span class="section-name">Saved</span>
             </div>
-            <div class="saved-title-row">
-                <h2 class="opp-heading" id="saved-heading">YOUR <span class="accent">SAVED JOBS</span></h2>
+            <div class="saved-title-row section-observe">
+                <h2 class="opp-heading" id="saved-heading">Your <em>Saved Jobs</em></h2>
                 <span class="saved-total" id="saved-section-total" aria-live="polite">0 jobs saved</span>
             </div>
 
-           
-            <div class="saved-empty" id="saved-empty">
+            <div class="saved-empty section-observe" id="saved-empty">
                 <div class="saved-empty-icon" aria-hidden="true">🔖</div>
-                <p class="saved-empty-title">NO SAVED JOBS YET</p>
+                <p class="saved-empty-title">No Saved Jobs Yet</p>
                 <p class="saved-empty-text">Hit the bookmark icon on any listing to save it here for later.</p>
-                <a href="#opportunities" class="cta-btn saved-browse-btn" id="saved-browse-btn"
+                <a href="#opportunities" class="cta-btn liquid-glass-strong saved-browse-btn" id="saved-browse-btn"
                     aria-label="Browse opportunities">
-                    <span class="cta-inner">BROWSE JOBS</span>
-                    <span class="cta-arrow" aria-hidden="true">&#8594;</span>
+                    <span class="cta-inner">Browse Jobs</span>
+                    <span class="cta-arrow" aria-hidden="true">↗</span>
                 </a>
             </div>
 
-           
             <div class="cards-grid" id="saved-section-grid" aria-label="Saved job listings" aria-live="polite"></div>
         </div>
     </section>
@@ -504,17 +464,15 @@
     <section id="about" class="about-section" aria-labelledby="about-heading">
         <div class="about-inner">
 
-       
-            <div class="opp-section-label">
-                <span class="section-num accent">03</span>
+            <div class="opp-section-label section-observe">
+                <span class="section-num">03</span>
                 <span class="section-slash">/</span>
-                <span class="section-name">ABOUT</span>
+                <span class="section-name">About</span>
             </div>
 
-          
-            <div class="about-mission">
+            <div class="about-mission section-observe">
                 <h2 class="opp-heading" id="about-heading">
-                    BUILT FOR THE <span class="accent">NEXT GEN</span>
+                    Built for the <em>Next Gen</em>
                 </h2>
                 <p class="about-mission-text">
                     GetEmployed is a student-first opportunity intelligence platform — aggregating live jobs,
@@ -523,7 +481,7 @@
                 </p>
             </div>
 
-            <div class="about-features" role="list">
+            <div class="about-features section-observe" role="list">
 
                 <div class="feature-card" role="listitem" id="feature-live">
                     <div class="feature-icon" aria-hidden="true">
@@ -533,7 +491,7 @@
                             <polyline points="12 6 12 12 16 14" />
                         </svg>
                     </div>
-                    <h3 class="feature-title">LIVE DATA</h3>
+                    <h3 class="feature-title">Live Data</h3>
                     <p class="feature-desc">Job listings refreshed every hour from hundreds of verified sources. Never
                         miss a new opening.</p>
                     <div class="feature-stat">10,000+ live listings</div>
@@ -548,7 +506,7 @@
                             <line x1="12" y1="18" x2="12" y2="18" />
                         </svg>
                     </div>
-                    <h3 class="feature-title">SMART FILTERS</h3>
+                    <h3 class="feature-title">Smart Filters</h3>
                     <p class="feature-desc">Slice by category, salary, location, and type. Find exactly what fits your
                         stage — internship or full-time.</p>
                     <div class="feature-stat">6 filter dimensions</div>
@@ -561,7 +519,7 @@
                             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                         </svg>
                     </div>
-                    <h3 class="feature-title">SAVE &amp; TRACK</h3>
+                    <h3 class="feature-title">Save &amp; Track</h3>
                     <p class="feature-desc">Bookmark any listing with one click. Your saved jobs persist across sessions
                         — no account needed.</p>
                     <div class="feature-stat">Local-first, zero sign-up</div>
@@ -575,7 +533,7 @@
                             <polyline points="22 4 12 14.01 9 11.01" />
                         </svg>
                     </div>
-                    <h3 class="feature-title">FREE FOREVER</h3>
+                    <h3 class="feature-title">Free Forever</h3>
                     <p class="feature-desc">Always free for students. No paywalls, no sponsored noise — pure
                         opportunity, straight to you.</p>
                     <div class="feature-stat">₹0 / month</div>
@@ -583,48 +541,44 @@
 
             </div>
 
-            <!-- CTA strip -->
-            <div class="about-cta-strip">
+            <div class="about-cta-strip section-observe">
                 <p class="about-cta-text">Ready to find your edge?</p>
-                <a href="#opportunities" class="cta-btn" id="about-cta" aria-label="Start exploring opportunities">
-                    <span class="cta-inner">START EXPLORING</span>
-                    <span class="cta-arrow" aria-hidden="true">&#8594;</span>
+                <a href="#opportunities" class="cta-btn liquid-glass-strong" id="about-cta" aria-label="Start exploring opportunities">
+                    <span class="cta-inner">Start Exploring</span>
+                    <span class="cta-arrow" aria-hidden="true">↗</span>
                 </a>
             </div>
 
         </div>
     </section>
 
-   
     <footer class="site-footer" id="footer" role="contentinfo">
         <div class="footer-inner">
 
             <div class="footer-top">
-              
+
                 <div class="footer-brand">
                     <a href="index.html" class="footer-logo" aria-label="GetEmployed Home">
-                        GET<span class="accent">EMPLOYED</span>
+                        Get<em>Employed</em>
                     </a>
                     <p class="footer-tagline">Opportunity intelligence for the next generation of professionals.</p>
                     <div class="footer-live-pill" aria-label="Live data status">
                         <span class="footer-live-dot" aria-hidden="true"></span>
-                        <span>LIVE DATA ACTIVE</span>
+                        <span>Live Data Active</span>
                     </div>
                 </div>
 
-         
                 <div class="footer-cols">
                     <div class="footer-col">
-                        <h4 class="footer-col-title">PLATFORM</h4>
+                        <h4 class="footer-col-title">Platform</h4>
                         <ul class="footer-col-links" role="list">
-                            <li><a href="#opportunities" class="footer-link" id="fl-opportunities">Opportunities</a>
-                            </li>
+                            <li><a href="#opportunities" class="footer-link" id="fl-opportunities">Opportunities</a></li>
                             <li><a href="#saved" class="footer-link" id="fl-saved">Saved Jobs</a></li>
                             <li><a href="#about" class="footer-link" id="fl-about">About</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4 class="footer-col-title">CATEGORIES</h4>
+                        <h4 class="footer-col-title">Categories</h4>
                         <ul class="footer-col-links" role="list">
                             <li><a href="#opportunities" class="footer-link" id="fl-tech">Tech</a></li>
                             <li><a href="#opportunities" class="footer-link" id="fl-design">Design</a></li>
@@ -633,7 +587,7 @@
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4 class="footer-col-title">CONNECT</h4>
+                        <h4 class="footer-col-title">Connect</h4>
                         <ul class="footer-col-links" role="list">
                             <li><a href="#" class="footer-link" id="fl-linkedin">LinkedIn</a></li>
                             <li><a href="#" class="footer-link" id="fl-twitter">Twitter / X</a></li>
@@ -644,7 +598,7 @@
             </div>
 
             <div class="footer-bottom">
-                <span class="footer-copy">Built with Adzuna API | GetEmployed &copy; 2025</span>
+                <span class="footer-copy">Built with Adzuna API &copy; GetEmployed 2025</span>
                 <div class="footer-bottom-links">
                     <a href="#" class="footer-bottom-link" id="fl-privacy">Privacy</a>
                     <a href="#" class="footer-bottom-link" id="fl-terms">Terms</a>
@@ -654,12 +608,11 @@
         </div>
     </footer>
 
-  
     <aside class="job-panel" id="job-panel" aria-modal="true" aria-label="Job details" hidden>
         <div class="jp-backdrop" id="jp-backdrop"></div>
         <div class="jp-drawer" id="jp-drawer" role="document">
             <div class="jp-topbar">
-                <span class="jp-topbar-label">JOB DETAILS</span>
+                <span class="jp-topbar-label">Job Details</span>
                 <button class="jp-close" id="jp-close" aria-label="Close job details">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">

@@ -1,7 +1,6 @@
 
 'use strict';
 
-
 const SAVED_KEY = 'getemployed_saved';
 
 function loadSavedJobs() {
@@ -11,7 +10,7 @@ function loadSavedJobs() {
 
 let state = {
   query:     '',
-  jobs:      [],       
+  jobs:      [],
   loading:   false,
   error:     null,
   category:  'all',
@@ -20,9 +19,8 @@ let state = {
   view:      'grid',
   page:      1,
   perPage:   6,
-  savedJobs: loadSavedJobs(),  
+  savedJobs: loadSavedJobs(),
 };
-
 
 const searchInput    = document.getElementById('search-input');
 const searchBtn      = document.getElementById('search-btn');
@@ -42,18 +40,14 @@ const savedNumEl     = document.getElementById('saved-num');
 const savedPluralEl  = document.getElementById('saved-plural');
 const topPicksList   = document.getElementById('top-picks-list');
 
-
 const savedSectionGrid  = document.getElementById('saved-section-grid');
 const savedSectionTotal = document.getElementById('saved-section-total');
 const savedEmptyEl      = document.getElementById('saved-empty');
-
 
 const jobPanel   = document.getElementById('job-panel');
 const jpBackdrop = document.getElementById('jp-backdrop');
 const jpClose    = document.getElementById('jp-close');
 const jpBody     = document.getElementById('jp-body');
-
-
 
 function isSaved(id) {
   return state.savedJobs.some(j => j.id === String(id));
@@ -129,7 +123,6 @@ function getInitials(company) {
 
 function scoreColor(s) { return s >= 76 ? '#22c55e' : s >= 50 ? '#f59e0b' : '#FF4655'; }
 
-
 function toggleSave(job) {
   const idx = state.savedJobs.findIndex(j => j.id === job.id);
   if (idx === -1) {
@@ -150,8 +143,6 @@ function updateSavedBadge() {
   if (savedPluralEl) savedPluralEl.textContent  = n === 1 ? '' : 's';
 }
 
-
-
 function salaryFilter(job) {
   const thresholds = { any: 0, '20k': 20000, '40k': 40000, '60k': 60000, '80k': 80000 };
   const min = thresholds[state.salary] || 0;
@@ -162,29 +153,26 @@ function getFiltered() {
   const q = state.query.toLowerCase().trim();
 
   let list = state.jobs.filter(j => {
-    
+
     const matchSearch = !q ||
       j.role.toLowerCase().includes(q)        ||
       j.company.toLowerCase().includes(q)     ||
       j.description.toLowerCase().includes(q);
 
-   
     const matchCat = state.category === 'all' ||
       j.categoryNorm === state.category ||
       j.category.toLowerCase().includes(state.category.toLowerCase());
 
-    
     const matchSal = salaryFilter(j);
 
     return matchSearch && matchCat && matchSal;
   });
 
-  
   if (state.sort === 'relevance') {
-    
+
     list.sort((a, b) => b.matchScore - a.matchScore);
   } else if (state.sort === 'salary-desc') {
-    
+
     list.sort((a, b) => {
       const av = a.salaryMin || a.salaryMax || 0;
       const bv = b.salaryMin || b.salaryMax || 0;
@@ -199,8 +187,6 @@ function getFiltered() {
 
   return list;
 }
-
-
 
 function buildCard(job, opts = {}) {
   const { showRemove = false } = opts;
@@ -231,14 +217,14 @@ function buildCard(job, opts = {}) {
       ${showRemove
         ? `<button class="az-save-btn saved" data-id="${job.id}"
               aria-label="Remove ${job.role} from saved" aria-pressed="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+              <svg xmlns="http:
                 fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
               </svg>
            </button>`
         : `<button class="az-save-btn ${saved ? 'saved' : ''}" data-id="${job.id}"
               aria-label="${saved ? 'Unsave' : 'Save'} ${job.role}" aria-pressed="${saved}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+              <svg xmlns="http:
                 fill="${saved ? 'currentColor' : 'none'}"
                 stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
@@ -284,20 +270,17 @@ function buildCard(job, opts = {}) {
     </div>
   `;
 
-  
   card.querySelector('.az-save-btn').addEventListener('click', e => {
     e.stopPropagation();
     toggleSave(job);
   });
 
-  
   card.querySelector('.az-view-btn').addEventListener('click', e => {
     e.stopPropagation();
     if (job.redirectUrl && job.redirectUrl !== '#') {
       window.open(job.redirectUrl, '_blank', 'noopener,noreferrer');
     }
   });
-
 
   card.addEventListener('click', e => {
     if (e.target.closest('.az-save-btn') || e.target.closest('.az-view-btn')) return;
@@ -307,13 +290,11 @@ function buildCard(job, opts = {}) {
   return card;
 }
 
-
-
 function renderError(msg) {
   cardsGrid.innerHTML = `
     <div class="api-error-card">
       <div class="api-error-icon" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+        <svg xmlns="http:
           fill="none" stroke="#FF4655" stroke-width="1.5" stroke-linecap="square">
           <circle cx="12" cy="12" r="10"/>
           <line x1="12" y1="8" x2="12" y2="12"/>
@@ -327,8 +308,6 @@ function renderError(msg) {
   `;
   cardsGrid.querySelector('#api-retry-btn')?.addEventListener('click', () => fetchAndRender());
 }
-
-
 
 function renderCards() {
   const filtered = getFiltered();
@@ -347,7 +326,7 @@ function renderCards() {
     cardsGrid.innerHTML = `
       <div class="no-results">
         <div class="no-results-icon az-red-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+          <svg xmlns="http:
             fill="none" stroke="#FF4655" stroke-width="1.5" stroke-linecap="square">
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -369,8 +348,6 @@ function renderCards() {
 function applyView() {
   cardsGrid.classList.toggle('list-view', state.view === 'list');
 }
-
-
 
 function renderTopPicks() {
   if (!topPicksList || state.jobs.length === 0) return;
@@ -395,15 +372,12 @@ function renderTopPicks() {
     </li>
   `).join('');
 
-
   topPicksList.querySelectorAll('.tp-animate').forEach(li => {
     const handler = () => openPanel(li.dataset.id);
     li.addEventListener('click', handler);
     li.addEventListener('keydown', e => { if (e.key === 'Enter') handler(); });
   });
 }
-
-
 
 async function fetchAndRender(what = 'developer') {
   state.loading = true;
@@ -443,8 +417,6 @@ async function fetchAndRender(what = 'developer') {
   }
 }
 
-
-
 function renderSavedSection() {
   if (!savedSectionGrid) return;
 
@@ -461,7 +433,6 @@ function renderSavedSection() {
 
   state.savedJobs.forEach(job => savedSectionGrid.appendChild(buildCard(job, { showRemove: true })));
 }
-
 
 function openPanel(id) {
   const strId = String(id);
@@ -502,7 +473,7 @@ function openPanel(id) {
       <a class="jp-apply-btn" href="${job.redirectUrl}" target="_blank"
          rel="noopener noreferrer" id="jp-apply-btn"
          aria-label="Apply for ${job.role}${job.company ? ' at ' + job.company : ''}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        <svg xmlns="http:
           fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
@@ -510,7 +481,7 @@ function openPanel(id) {
       </a>
       <button class="jp-save-btn ${saved ? 'saved' : ''}" id="jp-save-btn"
         aria-label="${saved ? 'Unsave' : 'Save'} this job" data-id="${strId}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+        <svg xmlns="http:
           fill="${saved ? 'currentColor' : 'none'}"
           stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
           <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
@@ -519,7 +490,6 @@ function openPanel(id) {
       </button>
     </div>
   `;
-
 
   jpBody.querySelector('#jp-save-btn').addEventListener('click', () => {
     toggleSave(job);
@@ -542,7 +512,6 @@ function closePanel() {
   document.body.style.overflow = '';
 }
 
-
 let _searchTimer = null;
 
 function applySearch() {
@@ -556,19 +525,17 @@ function debounceSearch() {
   _searchTimer = setTimeout(applySearch, 300);
 }
 
-
 searchInput.addEventListener('input', debounceSearch);
 searchInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter') { 
-    clearTimeout(_searchTimer); 
-    fetchAndRender(searchInput.value.trim() || 'developer'); 
+  if (e.key === 'Enter') {
+    clearTimeout(_searchTimer);
+    fetchAndRender(searchInput.value.trim() || 'developer');
   }
 });
 searchBtn.addEventListener('click', () => {
-  clearTimeout(_searchTimer); 
+  clearTimeout(_searchTimer);
   fetchAndRender(searchInput.value.trim() || 'developer');
 });
-
 
 filterCategory.addEventListener('change', () => {
   state.category = filterCategory.value; state.page = 1; renderCards();
@@ -579,7 +546,6 @@ filterSalary.addEventListener('change', () => {
 filterSort.addEventListener('change', () => {
   state.sort = filterSort.value; state.page = 1; renderCards();
 });
-
 
 filterReset.addEventListener('click', () => {
   state.query    = '';
@@ -594,7 +560,6 @@ filterReset.addEventListener('click', () => {
   fetchAndRender('developer');
 });
 
-
 loadMoreBtn.addEventListener('click', () => {
   state.page++;
   renderCards();
@@ -602,7 +567,6 @@ loadMoreBtn.addEventListener('click', () => {
   const firstNew = allCards[(state.page - 1) * state.perPage];
   if (firstNew) firstNew.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
-
 
 viewGridBtn.addEventListener('click', () => {
   state.view = 'grid';
@@ -626,13 +590,11 @@ if (filterMobBtn && filterBar) {
   });
 }
 
-
 if (jpClose)    jpClose.addEventListener('click', closePanel);
 if (jpBackdrop) jpBackdrop.addEventListener('click', closePanel);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && !jobPanel?.hidden) closePanel();
 });
-
 
 (function init() {
   updateSavedBadge();
