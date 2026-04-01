@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="GetEmployed — Opportunity Intelligence Platform for Students. Discover jobs, internships, and companies with live data." />
-    <title>GetEmployed | Opportunity Intelligence for Students</title>
+        content="GetEmployed — The ultimate career acceleration platform for students and graduates." />
+    <title>GetEmployed | Career Intelligence for the Next Generation</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,611 +22,249 @@
 
 <body>
 
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-
-            <a href="index.html" class="nav-logo" id="nav-logo" aria-label="GetEmployed Home">
-                <span class="nav-logo-inner">GE</span>
-            </a>
-
-            <ul class="nav-links" id="nav-links" role="list">
-                <li><a href="#opportunities" class="nav-link" id="nav-opportunities">Opportunities</a></li>
-                <li><a href="#saved" class="nav-link" id="nav-saved">Saved</a></li>
-                <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
-            </ul>
-
-            <div class="nav-controls">
-
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
-                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"
-                        stroke-linejoin="miter" aria-hidden="true">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                    </svg>
-                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"
-                        stroke-linejoin="miter" aria-hidden="true">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </button>
-
-                <button class="hamburger" id="hamburger" aria-label="Open mobile menu" aria-expanded="false"
-                    aria-controls="mobile-menu">
-                    <span class="ham-line"></span>
-                    <span class="ham-line"></span>
-                    <span class="ham-line"></span>
-                </button>
-            </div>
-        </div>
-
-        <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
-            <ul class="mobile-links" role="list">
-                <li><a href="#opportunities" class="mobile-link" id="mob-opportunities">Opportunities</a></li>
-                <li><a href="#saved" class="mobile-link" id="mob-saved">Saved</a></li>
-                <li><a href="#about" class="mobile-link" id="mob-about">About</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero" id="hero" aria-labelledby="hero-heading">
-
-        <div class="hero-dark-overlay" aria-hidden="true"></div>
-
-        <div aria-hidden="true" style="
-            position: absolute; inset: 0; z-index: 1; pointer-events: none;
-            background:
-                radial-gradient(ellipse 60% 50% at 50% -10%, rgba(137,170,204,0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(78,133,191,0.06) 0%, transparent 60%);
-        "></div>
-
-        <div class="hero-fade-bottom" aria-hidden="true"></div>
-
-        <div class="hero-content">
-
-            <div class="hero-tag liquid-glass animate-in delay-0" aria-label="Platform label">
-                <span class="tag-badge-new">New</span>
-                <span class="tag-text">Opportunity Intelligence Platform</span>
-            </div>
-
-            <h1 class="hero-heading" id="hero-heading" aria-label="Find Your Edge.">
-                <span class="word" data-word>
-                    <span class="letter">F</span><span class="letter">i</span><span class="letter">n</span><span class="letter">d</span>
-                </span>
-                <span class="word" style="margin-left: 0.2em;" data-word>
-                    <span class="letter">Y</span><span class="letter">o</span><span class="letter">u</span><span class="letter">r</span>
-                </span><br />
-                <span class="hero-accent word" data-word>
-                    <span class="letter">E</span><span class="letter">d</span><span class="letter">g</span><span class="letter">e</span><span class="letter">.</span>
-                </span>
-            </h1>
-
-            <p class="hero-sub" id="hero-sub">
-                Opportunity Intelligence for Students
-            </p>
-
-            <p class="hero-desc" id="hero-desc">
-                Real-time jobs, internships &amp; company insights — curated for the next generation of professionals.
-            </p>
-
-            <div class="hero-cta-wrap">
-                <a href="#opportunities" class="cta-btn liquid-glass-strong" id="hero-cta" aria-label="Explore Opportunities">
-                    <span class="cta-inner">Explore Opportunities</span>
-                    <span class="cta-arrow" aria-hidden="true">↗</span>
-                </a>
-                <a href="#about" class="cta-btn-ghost" id="hero-cta-ghost" aria-label="Learn More">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                        <polygon points="5 3 19 12 5 21 5 3"/>
-                    </svg>
-                    Learn More
-                </a>
-            </div>
-        </div>    </section>
-
-    <section class="stats-bar" id="stats-bar" aria-label="Platform statistics">
-        <div class="stats-container">
-
-            <div class="stat-item animate-stat section-observe" id="stat-jobs">
-                <div class="stat-numrow">
-                    <span class="stat-number" data-target="10000">0</span>
-                    <span class="stat-suffix">+</span>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <div class="navbar-left">
+                    <a href="index.html" class="nav-logo" id="nav-logo">GetEmployed</a>
                 </div>
-                <span class="stat-label">Live Jobs</span>
-            </div>
-
-            <div class="stat-divider" aria-hidden="true"></div>
-
-            <div class="stat-item animate-stat section-observe" id="stat-companies">
-                <div class="stat-numrow">
-                    <span class="stat-number" data-target="500">0</span>
-                    <span class="stat-suffix">+</span>
-                </div>
-                <span class="stat-label">Companies</span>
-            </div>
-
-            <div class="stat-divider" aria-hidden="true"></div>
-
-            <div class="stat-item animate-stat section-observe" id="stat-data">
-                <span class="stat-live-dot" aria-hidden="true"></span>
-                <span class="stat-live-label">Live</span>
-                <span class="stat-label">Updated Every Hour</span>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="opportunities" class="opp-section" aria-labelledby="opp-heading">
-
-        <div class="opp-section-header section-observe">
-            <div class="opp-section-label">
-                <span class="section-num">01</span>
-                <span class="section-slash">/</span>
-                <span class="section-name" style="display:flex;align-items:center;gap:12px;">
-                    Opportunities
-                    <span class="live-badge">
-                        <span class="live-dot"></span>LIVE
-                    </span>
-                </span>
-            </div>
-            <h2 class="opp-heading" id="opp-heading">Find Your <em>Next Move</em></h2>
-            <p class="opp-subtext">Browse thousands of live jobs, internships, and roles — filtered just for you.</p>
-        </div>
-
-        <div class="search-wrap section-observe" role="search">
-            <div class="search-bar" id="search-bar">
-                <svg class="search-icon-left" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"
-                    aria-hidden="true">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input type="search" class="search-input" id="search-input"
-                    placeholder="Search jobs, companies, or skills..." aria-label="Search opportunities"
-                    autocomplete="off" />
-                <button class="search-btn" id="search-btn" aria-label="Submit search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-                    <span>Search</span>
-                </button>
-            </div>
-        </div>
-
-        <button class="filter-mob-btn" id="filter-mob-btn" aria-expanded="false" aria-controls="filter-bar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-            </svg>
-            Filters &amp; Sort
-        </button>
-
-        <div class="filter-bar" id="filter-bar" role="group" aria-label="Filter opportunities">
-            <div class="filter-group">
-                <label class="filter-label" for="filter-category">Category</label>
-                <div class="select-wrap">
-                    <select class="filter-select" id="filter-category" aria-label="Filter by category">
-                        <option value="all">All Categories</option>
-                        <option value="tech">Tech</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="finance">Finance</option>
-                        <option value="design">Design</option>
-                        <option value="healthcare">Healthcare</option>
-                    </select>
-                    <svg class="select-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"
-                        aria-hidden="true">
-                        <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label" for="filter-salary">Salary</label>
-                <div class="select-wrap">
-                    <select class="filter-select" id="filter-salary" aria-label="Filter by salary">
-                        <option value="any">Any Salary</option>
-                        <option value="20k">&pound;20k+</option>
-                        <option value="40k">&pound;40k+</option>
-                        <option value="60k">&pound;60k+</option>
-                        <option value="80k">&pound;80k+</option>
-                    </select>
-                    <svg class="select-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"
-                        aria-hidden="true">
-                        <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label" for="filter-sort">Sort by</label>
-                <div class="select-wrap">
-                    <select class="filter-select" id="filter-sort" aria-label="Sort results">
-                        <option value="relevance">Relevance</option>
-                        <option value="salary-desc">Salary High→Low</option>
-                        <option value="az">A–Z</option>
-                    </select>
-                    <svg class="select-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"
-                        aria-hidden="true">
-                        <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                </div>
-            </div>
-
-            <button class="filter-reset" id="filter-reset" aria-label="Reset all filters">↺ Reset</button>
-        </div>
-
-        <div class="results-meta">
-            <span class="results-count" id="results-count" aria-live="polite">
-                Showing <strong id="results-num">24</strong> opportunities
-            </span>
-            <div class="results-view-toggle" role="group" aria-label="Toggle view">
-                <button class="view-btn active" id="view-grid" aria-label="Grid view" title="Grid view">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
-                        <rect x="3" y="3" width="7" height="7" />
-                        <rect x="14" y="3" width="7" height="7" />
-                        <rect x="3" y="14" width="7" height="7" />
-                        <rect x="14" y="14" width="7" height="7" />
-                    </svg>
-                </button>
-                <button class="view-btn" id="view-list" aria-label="List view" title="List view">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
-                        <line x1="8" y1="6" x2="21" y2="6" />
-                        <line x1="8" y1="12" x2="21" y2="12" />
-                        <line x1="8" y1="18" x2="21" y2="18" />
-                        <line x1="3" y1="6" x2="3.01" y2="6" />
-                        <line x1="3" y1="12" x2="3.01" y2="12" />
-                        <line x1="3" y1="18" x2="3.01" y2="18" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <div class="opp-layout" id="opp-layout">
-
-            <aside class="opp-sidebar" id="opp-sidebar" aria-label="Sidebar">
-
-                <div class="sidebar-card" id="sidebar-top-picks">
-                    <div class="sidebar-card-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-                            <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg>
-                        <h3 class="sidebar-card-title">Top Picks</h3>
-                    </div>
-                    <ul class="top-picks-list" id="top-picks-list" aria-label="Top job picks">
-                        <li class="top-pick-item">
-                            <span class="pick-dot"></span>
-                            <div class="pick-info">
-                                <span class="pick-role">Frontend Engineer</span>
-                                <span class="pick-company">Google</span>
-                            </div>
-                            <span class="pick-badge">HOT</span>
-                        </li>
-                        <li class="top-pick-item">
-                            <span class="pick-dot"></span>
-                            <div class="pick-info">
-                                <span class="pick-role">UX Designer</span>
-                                <span class="pick-company">Microsoft</span>
-                            </div>
-                            <span class="pick-badge">NEW</span>
-                        </li>
-                        <li class="top-pick-item">
-                            <span class="pick-dot"></span>
-                            <div class="pick-info">
-                                <span class="pick-role">Product Manager</span>
-                                <span class="pick-company">Flipkart</span>
-                            </div>
-                        </li>
-                        <li class="top-pick-item">
-                            <span class="pick-dot"></span>
-                            <div class="pick-info">
-                                <span class="pick-role">Data Analyst</span>
-                                <span class="pick-company">Amazon</span>
-                            </div>
-                            <span class="pick-badge">HOT</span>
-                        </li>
-                        <li class="top-pick-item">
-                            <span class="pick-dot"></span>
-                            <div class="pick-info">
-                                <span class="pick-role">ML Intern</span>
-                                <span class="pick-company">OpenAI</span>
-                            </div>
-                            <span class="pick-badge">NEW</span>
-                        </li>
+                
+                <div class="navbar-center">
+                    <ul class="nav-links">
+                        <li><a href="#" class="nav-link active">Home</a></li>
+                        <li><a href="#opportunities" class="nav-link" id="nav-opportunities">Browse</a></li>
+                        <li><a href="#saved" class="nav-link" id="nav-saved">My List</a></li>
+                        <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
                     </ul>
                 </div>
 
-                <div class="sidebar-card" id="sidebar-saved">
-                    <div class="sidebar-card-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-                        </svg>
-                        <h3 class="sidebar-card-title">Saved Jobs</h3>
-                        <span class="saved-badge" id="saved-count" aria-label="3 saved jobs">3</span>
-                    </div>
-                    <p class="sidebar-empty-text" id="saved-empty-text">
-                        You have <strong id="saved-num">3</strong> saved job<span id="saved-plural">s</span>.
-                        <a href="#saved" class="sidebar-link">View all →</a>
-                    </p>
-                </div>
-
-                <div class="sidebar-card sidebar-card--accent" id="sidebar-quick-stat">
-                    <div class="qs-label">Trending Skill</div>
-                    <div class="qs-value">React.js</div>
-                    <div class="qs-meta">Found in 2,340 listings this week</div>
-                    <div class="qs-bar-wrap" aria-hidden="true">
-                        <div class="qs-bar" style="width:82%"></div>
-                    </div>
-                </div>
-
-            </aside>
-
-            <main class="opp-main" id="opp-main" aria-label="Job listings">
-
-                <div class="cards-grid skeleton-grid" id="skeleton-grid" aria-label="Loading..." aria-busy="true">
-                    <div class="skeleton-card" aria-hidden="true">
-                        <div class="sk sk-logo"></div>
-                        <div class="sk-body">
-                            <div class="sk sk-title"></div>
-                            <div class="sk sk-sub"></div>
-                            <div class="sk-tags">
-                                <div class="sk sk-tag"></div>
-                                <div class="sk sk-tag short"></div>
-                            </div>
-                            <div class="sk sk-footer"></div>
+                <div class="navbar-right">
+                    <div class="search-container" id="search-container">
+                        <button class="nav-icon" id="search-toggle-btn" aria-label="Search">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                        <div class="search-bar-wrap">
+                            <input type="search" class="search-input" id="search-input" placeholder="Search roles..." autocomplete="off">
                         </div>
                     </div>
-                    <div class="skeleton-card" aria-hidden="true">
-                        <div class="sk sk-logo"></div>
-                        <div class="sk-body">
-                            <div class="sk sk-title"></div>
-                            <div class="sk sk-sub"></div>
-                            <div class="sk-tags">
-                                <div class="sk sk-tag"></div>
-                                <div class="sk sk-tag short"></div>
-                            </div>
-                            <div class="sk sk-footer"></div>
-                        </div>
-                    </div>
-                    <div class="skeleton-card" aria-hidden="true">
-                        <div class="sk sk-logo"></div>
-                        <div class="sk-body">
-                            <div class="sk sk-title"></div>
-                            <div class="sk sk-sub"></div>
-                            <div class="sk-tags">
-                                <div class="sk sk-tag"></div>
-                                <div class="sk sk-tag short"></div>
-                            </div>
-                            <div class="sk sk-footer"></div>
-                        </div>
+
+                    <div class="profile-avatar">GE</div>
+                    <div class="hamburger" id="hamburger-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
-
-                <div class="cards-grid" id="cards-grid" aria-label="Job cards" hidden></div>
-
-                <div class="load-more-wrap" id="load-more-wrap" hidden>
-                    <button class="load-more-btn" id="load-more-btn" aria-label="Load more opportunities">
-                        Load More
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </button>
-                </div>
-
-            </main>
+            </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="saved" class="saved-section" aria-labelledby="saved-heading">
-        <div class="saved-inner">
-            <div class="opp-section-label section-observe">
-                <span class="section-num">02</span>
-                <span class="section-slash">/</span>
-                <span class="section-name">Saved</span>
-            </div>
-            <div class="saved-title-row section-observe">
-                <h2 class="opp-heading" id="saved-heading">Your <em>Saved Jobs</em></h2>
-                <span class="saved-total" id="saved-section-total" aria-live="polite">0 jobs saved</span>
-            </div>
-
-            <div class="saved-empty section-observe" id="saved-empty">
-                <div class="saved-empty-icon" aria-hidden="true">🔖</div>
-                <p class="saved-empty-title">No Saved Jobs Yet</p>
-                <p class="saved-empty-text">Hit the bookmark icon on any listing to save it here for later.</p>
-                <a href="#opportunities" class="cta-btn liquid-glass-strong saved-browse-btn" id="saved-browse-btn"
-                    aria-label="Browse opportunities">
-                    <span class="cta-inner">Browse Jobs</span>
-                    <span class="cta-arrow" aria-hidden="true">↗</span>
-                </a>
-            </div>
-
-            <div class="cards-grid" id="saved-section-grid" aria-label="Saved job listings" aria-live="polite"></div>
+    <header class="hero" id="hero">
+        <div class="hero-media">
+             <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070" alt="Hero">
         </div>
-    </section>
-
-    <section id="about" class="about-section" aria-labelledby="about-heading">
-        <div class="about-inner">
-
-            <div class="opp-section-label section-observe">
-                <span class="section-num">03</span>
-                <span class="section-slash">/</span>
-                <span class="section-name">About</span>
-            </div>
-
-            <div class="about-mission section-observe">
-                <h2 class="opp-heading" id="about-heading">
-                    Built for the <em>Next Gen</em>
-                </h2>
-                <p class="about-mission-text">
-                    GetEmployed is a student-first opportunity intelligence platform — aggregating live jobs,
-                    internships, and company insights so the next generation of professionals can compete
-                    with clarity and confidence.
-                </p>
-            </div>
-
-            <div class="about-features section-observe" role="list">
-
-                <div class="feature-card" role="listitem" id="feature-live">
-                    <div class="feature-icon" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
-                            <circle cx="12" cy="12" r="10" />
-                            <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Live Data</h3>
-                    <p class="feature-desc">Job listings refreshed every hour from hundreds of verified sources. Never
-                        miss a new opening.</p>
-                    <div class="feature-stat">10,000+ live listings</div>
-                </div>
-
-                <div class="feature-card" role="listitem" id="feature-filters">
-                    <div class="feature-icon" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
-                            <line x1="4" y1="6" x2="20" y2="6" />
-                            <line x1="8" y1="12" x2="16" y2="12" />
-                            <line x1="12" y1="18" x2="12" y2="18" />
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Smart Filters</h3>
-                    <p class="feature-desc">Slice by category, salary, location, and type. Find exactly what fits your
-                        stage — internship or full-time.</p>
-                    <div class="feature-stat">6 filter dimensions</div>
-                </div>
-
-                <div class="feature-card" role="listitem" id="feature-save">
-                    <div class="feature-icon" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
-                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Save &amp; Track</h3>
-                    <p class="feature-desc">Bookmark any listing with one click. Your saved jobs persist across sessions
-                        — no account needed.</p>
-                    <div class="feature-stat">Local-first, zero sign-up</div>
-                </div>
-
-                <div class="feature-card" role="listitem" id="feature-free">
-                    <div class="feature-icon" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                            <polyline points="22 4 12 14.01 9 11.01" />
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Free Forever</h3>
-                    <p class="feature-desc">Always free for students. No paywalls, no sponsored noise — pure
-                        opportunity, straight to you.</p>
-                    <div class="feature-stat">₹0 / month</div>
-                </div>
-
-            </div>
-
-            <div class="about-cta-strip section-observe">
-                <p class="about-cta-text">Ready to find your edge?</p>
-                <a href="#opportunities" class="cta-btn liquid-glass-strong" id="about-cta" aria-label="Start exploring opportunities">
-                    <span class="cta-inner">Start Exploring</span>
-                    <span class="cta-arrow" aria-hidden="true">↗</span>
-                </a>
-            </div>
-
+        <div class="hero-overlay">
+            <div class="hero-fade-top"></div>
+            <div class="hero-fade-bottom"></div>
         </div>
-    </section>
 
-    <footer class="site-footer" id="footer" role="contentinfo">
-        <div class="footer-inner">
+        <div class="hero-content">
+            <h1 class="hero-title" id="hero-heading">
+                Launch Your <em>Legacy</em>
+            </h1>
+            <p class="hero-desc">
+                The career intelligence layer built for high-performers. Access exclusive opportunities, real-time market data, and company insights that put you ahead of the curve.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="hero-cta">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 4l12 8-12 8z"/></svg>
+                    Explore Now
+                </button>
+                <button class="btn-secondary" id="hero-cta-ghost">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    Company Story
+                </button>
+            </div>
+        </div>
+    </header>
 
+    <div class="container">
+        <div class="category-tabs" id="category-tabs">
+            <button class="tab active" data-cat="all">All Roles</button>
+            <button class="tab" data-cat="tech">Technology</button>
+            <button class="tab" data-cat="design">Creative & Design</button>
+            <button class="tab" data-cat="marketing">Growth & Marketing</button>
+            <button class="tab" data-cat="finance">Capital & Finance</button>
+            <button class="tab" data-cat="healthcare">Life Sciences</button>
+        </div>
+    </div>
+
+    <main class="netflix-layout section">
+
+        <section class="content-row container top10-container" id="row-top-picks">
+            <header class="section-header">
+                <h2 class="section-heading">Trending Opportunities</h2>
+                <p class="section-subtext">The highest-engagement roles curated for your professional trajectory.</p>
+            </header>
+            
+            <div class="scroll-container-wrap">
+                <button class="scroll-arrow scroll-arrow--left" aria-label="Scroll left">❮</button>
+                <ul class="scroll-container" id="top-picks-list"></ul>
+                <button class="scroll-arrow scroll-arrow--right" aria-label="Scroll right">❯</button>
+            </div>
+        </section>
+
+        <section class="content-row container" id="saved">
+            <header class="section-header">
+                <h2 class="section-heading">Shortlisted Roles</h2>
+                <p class="section-subtext">Your personalized collection of high-potential opportunities.</p>
+            </header>
+            
+            <div id="saved-section-grid" class="card-grid">
+                <div class="saved-empty" id="saved-empty">
+                    No roles shortlisted yet. Explore opportunities to build your list.
+                </div>
+            </div>
+        </section>
+
+        <section class="billboard-mid">
+            <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070" alt="Office">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="section-heading" style="font-size: 3.5rem;">Global <em>Impact</em></h2>
+                    <p class="section-subtext">Join world-class organizations building the future from anywhere in the world.</p>
+                    <div class="hero-buttons" style="margin-top: 2rem;">
+                        <button class="btn-primary" onclick="document.getElementById('opportunities').scrollIntoView({behavior:'smooth'})">Explore Remote</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-row container" id="opportunities">
+            <header class="section-header">
+                <div class="flex-between full-mobile" style="width: 100%; align-items: flex-end;">
+                  <div>
+                    <h2 class="section-heading">Global Opportunity Index</h2>
+                    <p class="section-subtext">Unified directory of elite roles fetched in real-time from our global network.</p>
+                  </div>
+                  <div class="filter-controls hide-mobile">
+                      <select id="filter-sort" class="btn-secondary">
+                          <option value="relevance">Sort By: Relevance</option>
+                          <option value="salary-desc">Highest Compensation</option>
+                          <option value="date-desc">Newest Listings</option>
+                          <option value="az">A-Z Name</option>
+                      </select>
+                      <select id="filter-salary" class="btn-secondary">
+                          <option value="any">Any Salary</option>
+                          <option value="40000">£40k+</option>
+                          <option value="60000">£60k+</option>
+                          <option value="80000">£80k+</option>
+                      </select>
+                  </div>
+                </div>
+            </header>
+
+            <div id="cards-grid" class="card-grid"></div>
+
+            <div class="pagination-wrap" id="pagination-wrap" style="text-align: center; margin-top: 5rem;">
+                <div id="pagination-buttons" class="pagination-controls"></div>
+            </div>
+        </section>
+
+        <section id="about" class="container section section-centered">
+            <h2 class="section-heading">The Future of <em>Career Discovery</em></h2>
+            <p class="section-subtext" style="max-width: 80ch;">GetEmployed leverages proprietary career intelligence to bridge the gap between high-potential talent and world-class opportunities. Our platform isn't just a search engine—it's a launchpad for the next generation of industry leaders.</p>
+            
+            <div class="usp-grid grid-3" style="margin-top:4rem">
+                <div class="usp-item">
+                    <h3>Real-Time Data</h3>
+                    <p>Live indexing of thousands of global opportunities updated every hour.</p>
+                </div>
+                <div class="usp-item">
+                    <h3>Smart Matching</h3>
+                    <p>Proprietary scoring system based on role compatibility and market data.</p>
+                </div>
+                <div class="usp-item">
+                    <h3>Student First</h3>
+                    <p>Architecture designed specifically for early-career trajectory building.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
             <div class="footer-top">
-
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo" aria-label="GetEmployed Home">
-                        Get<em>Employed</em>
-                    </a>
-                    <p class="footer-tagline">Opportunity intelligence for the next generation of professionals.</p>
-                    <div class="footer-live-pill" aria-label="Live data status">
-                        <span class="footer-live-dot" aria-hidden="true"></span>
-                        <span>Live Data Active</span>
-                    </div>
-                </div>
-
-                <div class="footer-cols">
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Platform</h4>
-                        <ul class="footer-col-links" role="list">
-                            <li><a href="#opportunities" class="footer-link" id="fl-opportunities">Opportunities</a></li>
-                            <li><a href="#saved" class="footer-link" id="fl-saved">Saved Jobs</a></li>
-                            <li><a href="#about" class="footer-link" id="fl-about">About</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Categories</h4>
-                        <ul class="footer-col-links" role="list">
-                            <li><a href="#opportunities" class="footer-link" id="fl-tech">Tech</a></li>
-                            <li><a href="#opportunities" class="footer-link" id="fl-design">Design</a></li>
-                            <li><a href="#opportunities" class="footer-link" id="fl-finance">Finance</a></li>
-                            <li><a href="#opportunities" class="footer-link" id="fl-marketing">Marketing</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Connect</h4>
-                        <ul class="footer-col-links" role="list">
-                            <li><a href="#" class="footer-link" id="fl-linkedin">LinkedIn</a></li>
-                            <li><a href="#" class="footer-link" id="fl-twitter">Twitter / X</a></li>
-                            <li><a href="#" class="footer-link" id="fl-github">GitHub</a></li>
-                        </ul>
-                    </div>
+                <a href="#" class="nav-logo" style="margin-bottom: 2rem;">GetEmployed</a>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social-icon">Twitter</a>
+                    <a href="#" class="footer-social-icon">LinkedIn</a>
+                    <a href="#" class="footer-social-icon">Instagram</a>
                 </div>
             </div>
-
+            
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Product</h4>
+                    <a href="#" class="footer-link">Opportunity Index</a>
+                    <a href="#" class="footer-link">Smart Matching</a>
+                    <a href="#" class="footer-link">Market Insights</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Company</h4>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Partner Program</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Resources</h4>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Market Blog</a>
+                    <a href="#" class="footer-link">Success Stories</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Legal</h4>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Security</a>
+                </div>
+            </div>
+            
             <div class="footer-bottom">
-                <span class="footer-copy">Built with Adzuna API &copy; GetEmployed 2025</span>
-                <div class="footer-bottom-links">
-                    <a href="#" class="footer-bottom-link" id="fl-privacy">Privacy</a>
-                    <a href="#" class="footer-bottom-link" id="fl-terms">Terms</a>
-                </div>
+                <div class="footer-copy">© 2025 GetEmployed Inc. Career Intelligence for High Performers. Powered by Adzuna Global.</div>
             </div>
-
         </div>
     </footer>
 
-    <aside class="job-panel" id="job-panel" aria-modal="true" aria-label="Job details" hidden>
+    <div class="modal-overlay" id="job-panel">
         <div class="jp-backdrop" id="jp-backdrop"></div>
-        <div class="jp-drawer" id="jp-drawer" role="document">
-            <div class="jp-topbar">
-                <span class="jp-topbar-label">Job Details</span>
-                <button class="jp-close" id="jp-close" aria-label="Close job details">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                </button>
-            </div>
-            <div class="jp-body" id="jp-body"></div>
+        <div class="modal-card" id="jp-drawer">
+            <button class="modal-close" id="jp-close" aria-label="Close modal">✕</button>
+            <div id="jp-body"></div>
         </div>
-    </aside>
+    </div>
+
+    <div style="display:none">
+        <button id="search-btn"></button>
+        <button id="filter-reset"></button>
+        <select id="filter-category"><option value="all"></option></select>
+        <div id="theme-toggle"></div>
+        <div id="hamburger"></div>
+        <div id="mobile-menu"></div>
+        <div id="results-count"><span id="results-num"></span></div>
+        <button id="view-grid"></button>
+        <button id="view-list"></button>
+        <div id="saved-count"></div>
+        <div id="saved-num"></div>
+        <div id="saved-plural"></div>
+    </div>
 
     <script src="js/main.js"></script>
     <script src="js/adzuna.js"></script>
     <script src="js/opportunities.js"></script>
 </body>
-
 </html>
