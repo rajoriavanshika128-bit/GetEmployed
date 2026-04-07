@@ -149,3 +149,226 @@
   pointer-events: none;
   z-index: -1;
 }
+
+/* ========================================================================
+   RESPONSIVE DESIGN ENHANCEMENTS
+   Optimized breakpoints: Mobile (320px), Tablet (768px), Desktop (1024px)
+   ======================================================================== */
+
+/* Mobile Devices (320px - 767px) */
+@media (max-width: 767px) {
+  .billboard-mid {
+    height: clamp(300px, 80vw, 500px);
+    margin: clamp(2rem, 4vw, 3rem) 0;
+  }
+  
+  .billboard-mid .hero-overlay {
+    background: linear-gradient(
+      to right,
+      var(--bg) 0%,
+      rgba(10,10,10,0.8) 30%,
+      transparent 100%
+    ),
+    linear-gradient(to top, var(--bg) 0%, transparent 30%);
+  }
+  
+  .billboard-mid .section-heading {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+  
+  .usp-grid {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .usp-item {
+    padding: 1.5rem;
+    border-radius: 6px;
+  }
+  
+  .usp-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .usp-item p {
+    font-size: 0.85rem;
+  }
+  
+  .site-footer {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+  
+  .footer-top {
+    flex-direction: column;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+  }
+  
+  .footer-socials {
+    gap: 1.5rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .footer-col-title {
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-link {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .footer-bottom {
+    padding-top: 1.5rem;
+  }
+  
+  .footer-copy {
+    font-size: 0.7rem;
+    line-height: 1.5;
+  }
+  
+  .usp-item:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .billboard-mid {
+    height: clamp(450px, 50vw, 600px);
+  }
+  
+  .billboard-mid .section-heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+  
+  .usp-grid {
+    gap: 1.5rem;
+  }
+  
+  .usp-item {
+    padding: 2rem;
+  }
+  
+  .usp-item h3 {
+    font-size: 1.3rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .site-footer {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .billboard-mid:hover .hero-media img {
+    transform: scale(1.1);
+  }
+  
+  .usp-item:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: var(--accent-start);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(137, 170, 204, 0.1);
+  }
+  
+  .footer-link:hover {
+    transform: translateX(4px);
+  }
+  
+  .footer-social-icon:hover {
+    color: var(--accent-start);
+  }
+}
+
+/* Extra Large Screens (1440px+) */
+@media (min-width: 1440px) {
+  .billboard-mid .section-heading {
+    font-size: 4.5rem;
+  }
+  
+  .usp-item {
+    padding: 3rem;
+  }
+  
+  .usp-item h3 {
+    font-size: 1.7rem;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost,
+  .usp-item {
+    transition: all 0.15s ease;
+  }
+  
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+  
+  .scroll-arrow {
+    width: 45px;
+  }
+}
+
+/* High DPI Displays */
+@media (min-resolution: 192dpi) {
+  .hero-media img,
+  .modal-hero-img,
+  .billboard-mid .hero-media img {
+    image-rendering: high-quality;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .usp-item {
+    background: rgba(255,255,255,0.02);
+  }
+  
+  .usp-item:hover {
+    background: rgba(255,255,255,0.04);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .billboard-mid .hero-media img,
+  .hero:hover .hero-media img,
+  .billboard-mid:hover .hero-media img {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+  
+  .usp-item,
+  .usp-item:hover,
+  .footer-link,
+  .footer-link:hover {
+    transform: none;
+    transition: color 0.2s;
+  }
+  
+  .billboard-mid .hero-media img {
+    animation: none;
+  }
+}
+}

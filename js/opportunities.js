@@ -210,18 +210,68 @@ function renderPagination() {
 
 async function fetchTrending() {
   try {
+    console.log('[fetchTrending] Starting fetch...');
     const data = await fetchJobs('internship', 1, 'relevance');
     state.trendingJobs = (data.results || []).map((raw, idx) => mapJob(raw, idx)).slice(0, 10);
+    console.log('[fetchTrending] Success:', state.trendingJobs.length, 'trending jobs loaded');
     renderTrending();
-  } catch (err) { console.error('Trending fetch error', err); }
+  } catch (err) {
+    console.error('[fetchTrending] Error:', err);
+    state.error = err.message;
+    // Gracefully handle trending fetch failure - show empty state but continue
+    if (topPicksList) {
+      topPicksList.innerHTML = `
+        <div style="
+          grid-column: 1 / -1;
+          text-align: center;
+          padding: 2rem;
+          color: var(--muted);
+        ">
+          Trending opportunities temporarily unavailable
+        </div>
+      `;
+    }
+  }
 }
 
+/**
+ * Render skeleton loaders for cards
+ * Creates a visual placeholder while loading
+ */
+function renderSkeletons() {
+  if (!cardsGrid) return;
+  cardsGrid.innerHTML = '';
+  for (let i = 0; i < 8; i++) {
+    const skeleton = document.createElement('div');
+    skeleton.className = 'skeleton-card';
+    skeleton.innerHTML = `
+      <div class="skeleton-line long"></div>
+      <div class="skeleton-line"></div>
+      <div class="skeleton-line medium"></div>
+      <div class="skeleton-line short"></div>
+    `;
+    cardsGrid.appendChild(skeleton);
+  }
+}
+
+/**
+ * Fetch jobs with comprehensive loading state management
+ * - Shows skeleton loaders during fetch
+ * - Implements error recovery with user-friendly messages
+ * - Updates UI with loading indicators
+ * - Handles network errors gracefully
+ */
 async function fetchBrowse(page = 1) {
   state.loading = true;
   state.page = page;
-  cardsGrid.innerHTML = '<div class="loading-state">Synchronizing Opportunities...</div>';
-  
+  state.error = null;
+
+  // Show skeleton loaders immediately
+  renderSkeletons();
+
   try {
+    console.log('[fetchBrowse] Fetching page', page, 'with query:', state.query || 'graduate');
+    
     const data = await fetchJobs(state.query || 'graduate', state.page, state.sort);
     const rawResults = data.results || [];
     const trendingIds = new Set(state.trendingJobs.map(j => j.id));
@@ -232,10 +282,37 @@ async function fetchBrowse(page = 1) {
 
     state.totalPages = Math.min(Math.ceil((data.count || 0) / 20), 50);
     state.loading = false;
+    state.error = null;
+    
+    console.log('[fetchBrowse] Success:', state.browseJobs.length, 'jobs loaded');
     renderBrowseResults();
+    
   } catch (err) {
     state.loading = false;
-    cardsGrid.innerHTML = `<div class="error-msg">Integration error. Please try again.</div>`;
+    state.error = err.message;
+    
+    console.error('[fetchBrowse] Error:', err);
+    
+    // Display user-friendly error message
+    const errorMsg = err.message || 'Unable to load opportunities. Please try again.';
+    cardsGrid.innerHTML = `
+      <div class="error-msg">
+        ${errorMsg}
+        <button onclick="location.reload()" style="
+          margin-top: 1rem;
+          padding: 0.75rem 1.5rem;
+          background: var(--accent-start);
+          color: white;
+          border: none;
+          border-radius: var(--radius-pill);
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.2s;
+        " onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+          Try Again
+        </button>
+      </div>
+    `;
   }
 }
 
@@ -314,6 +391,24 @@ if (jpClose) jpClose.addEventListener('click', closePanel);
 if (jpBackdrop) jpBackdrop.addEventListener('click', closePanel);
 
 (function init() {
+  console.log('[APP] Initializing GetEmployed...');
   updateSavedUI();
-  fetchTrending().then(() => fetchBrowse(1));
+  
+  // Load trending data first (non-blocking)
+  fetchTrending()
+    .then(() => {
+      console.log('[APP] Trending loaded, fetching browse results...');
+      // Then fetch main browse results
+      return fetchBrowse(1);
+    })
+    .catch(err => {
+      console.error('[APP] Initialization error:', err);
+      if (cardsGrid) {
+        cardsGrid.innerHTML = `
+          <div class="error-msg">
+            Failed to initialize application. Please refresh the page.
+          </div>
+        `;
+      }
+    });
 })();
