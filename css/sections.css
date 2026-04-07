@@ -150,12 +150,8 @@
   z-index: -1;
 }
 
-/* ========================================================================
-   RESPONSIVE DESIGN ENHANCEMENTS
-   Optimized breakpoints: Mobile (320px), Tablet (768px), Desktop (1024px)
-   ======================================================================== */
 
-/* Mobile Devices (320px - 767px) */
+
 @media (max-width: 767px) {
   .billboard-mid {
     height: clamp(300px, 80vw, 500px);
@@ -240,7 +236,7 @@
   }
 }
 
-/* Tablets (768px - 1023px) */
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .billboard-mid {
     height: clamp(450px, 50vw, 600px);
@@ -273,7 +269,6 @@
   }
 }
 
-/* Desktop (1024px+) */
 @media (min-width: 1024px) {
   .billboard-mid:hover .hero-media img {
     transform: scale(1.1);
@@ -295,7 +290,7 @@
   }
 }
 
-/* Extra Large Screens (1440px+) */
+
 @media (min-width: 1440px) {
   .billboard-mid .section-heading {
     font-size: 4.5rem;
@@ -310,7 +305,7 @@
   }
 }
 
-/* Touch Device Optimizations */
+
 @media (hover: none) and (pointer: coarse) {
   .btn-primary,
   .btn-secondary,
@@ -329,7 +324,6 @@
   }
 }
 
-/* High DPI Displays */
 @media (min-resolution: 192dpi) {
   .hero-media img,
   .modal-hero-img,
@@ -338,7 +332,6 @@
   }
 }
 
-/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   .usp-item {
     background: rgba(255,255,255,0.02);
@@ -349,7 +342,6 @@
   }
 }
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   .billboard-mid .hero-media img,
   .hero:hover .hero-media img,
@@ -370,5 +362,4 @@
   .billboard-mid .hero-media img {
     animation: none;
   }
-}
 }

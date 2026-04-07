@@ -235,14 +235,7 @@
   font-weight: 800;
 }
 
-/* ========================================================================
-   LOADING STATES & SKELETON LOADERS
-   ======================================================================== */
 
-/**
- * Loading state container
- * Displays during data fetch operations
- */
 .loading-state {
   display: flex;
   align-items: center;
@@ -257,10 +250,7 @@
   animation: fadeIn 0.3s ease;
 }
 
-/**
- * Animated spinner
- * Used to indicate active loading
- */
+
 .loading-state::before {
   content: '';
   display: inline-block;
@@ -281,10 +271,7 @@
   to { opacity: 1; }
 }
 
-/**
- * Skeleton loader
- * Placeholder for loading job cards
- */
+
 .skeleton-loader {
   display: flex;
   flex-direction: column;
@@ -325,9 +312,7 @@
   100% { background-position: -200% 0; }
 }
 
-/**
- * Skeleton card for job listings
- */
+
 .skeleton-card {
   display: flex;
   flex-direction: column;
@@ -344,9 +329,7 @@
 .skeleton-card .skeleton-line:nth-child(3) { height: 14px; width: 100%; }
 .skeleton-card .skeleton-line:nth-child(4) { height: 12px; width: 60%; }
 
-/**
- * Error message display
- */
+
 .error-msg {
   display: flex;
   flex-direction: column;
@@ -381,9 +364,7 @@
   }
 }
 
-/**
- * Loading bar (top of page indicator)
- */
+
 .loading-bar {
   position: fixed;
   top: 0;
@@ -404,9 +385,7 @@
   100% { width: 100%; }
 }
 
-/**
- * Pulsing animation for interactive elements
- */
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.6; }
@@ -467,7 +446,7 @@
   }
 }
 
-/* Tablet Optimization (768px - 1023px) */
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .scroll-container .job-card {
     min-width: 280px;
@@ -502,7 +481,7 @@
   }
 }
 
-/* Desktop Optimization (1024px+) */
+
 @media (min-width: 1024px) {
   .scroll-container .job-card {
     min-width: 320px;
@@ -516,7 +495,7 @@
   }
 }
 
-/* Touch Device Optimizations */
+
 @media (hover: none) and (pointer: coarse) {
   .scroll-arrow {
     opacity: 0.5;
@@ -536,7 +515,6 @@
   }
 }
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   .content-row,
   .job-card,

@@ -1,239 +1,155 @@
 'use strict';
 
-/**
- * ========================================================================
- * ADZUNA JOB SEARCH API INTEGRATION
- * ========================================================================
- * 
- * This module provides real-time job data fetching from the Adzuna API.
- * It handles all HTTP requests, error management, and response parsing.
- * 
- * Features:
- * - ✅ Real-time API calls using Fetch API
- * - ✅ Comprehensive error handling with meaningful messages
- * - ✅ Request timeout protection
- * - ✅ Retry logic for failed requests
- * - ✅ Response caching (optional)
- * - ✅ Type-safe parameter validation
- * 
- * API Documentation: https://developer.adzuna.com/
- * ========================================================================
- */
 
-// ========== API CONFIGURATION ==========
 const ADZUNA_APP_ID  = '3586e45f';
 const ADZUNA_APP_KEY = '2bdf493f3272c77cc95b80ee76abcc7b';
-const ADZUNA_BASE    = 'https://api.adzuna.com/v1/api/jobs/in/search/';
-const API_TIMEOUT    = 10000; // 10 seconds
-const MAX_RETRIES    = 3;
-const RETRY_DELAY    = 1000; // 1 second
+const ADZUNA_BASE    = 'https://api.adzuna.com/v1/api/jobs/gb/search/';
+const API_TIMEOUT    = 10000;
+const MAX_RETRIES    = 2;
+const RETRY_DELAY    = 1000;
 
-// ========== CACHE CONFIGURATION ==========
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-const requestCache = {};
 
-/**
- * Generate cache key from request parameters
- * @param {string} what - Job search query
- * @param {number} page - Page number
- * @param {string} sort - Sort order
- * @returns {string} Cache key
- */
-function getCacheKey(what, page, sort) {
-  return `${what}_${page}_${sort}`;
+const CACHE_DURATION = 5 * 60 * 1000;
+const requestCache   = {};
+
+function getCacheKey(what, page, sort, salaryMin) {
+  return `${what}_${page}_${sort}_${salaryMin}`;
 }
 
-/**
- * Check if cached data is still valid
- * @param {string} key - Cache key
- * @returns {boolean}
- */
 function isCacheValid(key) {
   const cached = requestCache[key];
   if (!cached) return false;
-  const now = Date.now();
-  return (now - cached.timestamp) < CACHE_DURATION;
+  return (Date.now() - cached.timestamp) < CACHE_DURATION;
 }
 
-/**
- * Fetch data from cache
- * @param {string} key - Cache key
- * @returns {object|null}
- */
 function getFromCache(key) {
-  if (isCacheValid(key)) {
-    console.log('[Cache Hit]', key);
-    return requestCache[key].data;
-  }
+  if (isCacheValid(key)) return requestCache[key].data;
   return null;
 }
 
-/**
- * Store data in cache
- * @param {string} key - Cache key
- * @param {object} data - Data to cache
- */
 function saveToCache(key, data) {
-  requestCache[key] = {
-    data: data,
-    timestamp: Date.now()
-  };
+  requestCache[key] = { data, timestamp: Date.now() };
 }
 
-/**
- * Create a promise that rejects after a timeout
- * @param {number} ms - Timeout in milliseconds
- * @returns {Promise}
- */
 function timeout(ms) {
   return new Promise((_, reject) =>
     setTimeout(() => reject(new Error(`Request timeout after ${ms}ms`)), ms)
   );
 }
 
-/**
- * Retry a failed request with exponential backoff
- * @param {Function} fn - Async function to retry
- * @param {number} retries - Number of retries
- * @param {number} delay - Delay between retries
- * @returns {Promise}
- */
 async function retryFetch(fn, retries = MAX_RETRIES, delay = RETRY_DELAY) {
   for (let i = 0; i < retries; i++) {
     try {
       return await fn();
     } catch (err) {
       if (i === retries - 1) throw err;
-      console.warn(`[Retry ${i + 1}/${retries}] Failed:`, err.message);
-      await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+      console.warn(`[Retry ${i + 1}/${retries}]`, err.message);
+      await new Promise(r => setTimeout(r, delay * Math.pow(2, i)));
     }
   }
 }
 
+
+function toAdzunaSort(sort) {
+  switch (sort) {
+    case 'salary-desc': return 'salary';
+    case 'date-desc':   return 'date';
+    case 'az':          return 'relevance'; 
+    default:            return 'relevance';
+  }
+}
+
 /**
- * ========================================================================
- * MAIN FETCH FUNCTION
- * ========================================================================
- * 
- * Fetches job listings from Adzuna API with:
- * - Query parameter validation
- * - Request caching
- * - Automatic retry on failure
- * - Timeout protection
- * - Detailed error messages
- * 
- * @param {string} what - Job search query (e.g., 'developer', 'designer')
- * @param {number} page - Page number (1-indexed, max 50 pages per API)
- * @param {string} sort - Sort order ('relevance', 'salary-desc', 'date-desc')
- * @returns {Promise<object>} Parsed JSON response with results array
- * 
- * @throws {Error} On network failure, API error, or timeout
- * 
- * @example
- * try {
- *   const data = await fetchJobs('javascript developer', 1, 'relevance');
- *   console.log(`Found ${data.count} jobs`);
- *   console.log(data.results); // Array of job objects
- * } catch (error) {
- *   console.error('Failed to fetch jobs:', error.message);
- * }
+ * Fetch job listings from Adzuna API.
+ *
+ @param {string} what      
+ * @param {number} page      - Page number (1–50)
+ * @param {string} sort      - 'relevance' | 'salary-desc' | 'date-desc' | 'az'
+ * @param {number} salaryMin - Minimum salary filter (0 = any)
+ * @returns {Promise<object>} Parsed response with .results array and .count
  */
-async function fetchJobs(what = 'developer', page = 1, sort = 'relevance') {
-  // ===== INPUT VALIDATION =====
-  what = String(what || 'developer').trim().substring(0, 100);
-  page = Math.max(1, Math.min(parseInt(page) || 1, 50)); // Clamp between 1-50
-  sort = ['relevance', 'salary-desc', 'date-desc', 'az'].includes(sort) ? sort : 'relevance';
+async function fetchJobs(what = 'graduate', page = 1, sort = 'relevance', salaryMin = 0) {
+  // Input validation
+  what      = String(what || 'graduate').trim().substring(0, 100) || 'graduate';
+  page      = Math.max(1, Math.min(parseInt(page) || 1, 50));
+  sort      = ['relevance', 'salary-desc', 'date-desc', 'az'].includes(sort) ? sort : 'relevance';
+  salaryMin = parseInt(salaryMin) || 0;
 
-  // ===== CHECK CACHE =====
-  const cacheKey = getCacheKey(what, page, sort);
-  const cached = getFromCache(cacheKey);
-  if (cached) return cached;
+  const cacheKey = getCacheKey(what, page, sort, salaryMin);
+  const cached   = getFromCache(cacheKey);
+  if (cached) {
+    console.log('[Cache Hit]', cacheKey);
+    return cached;
+  }
 
-  // ===== BUILD REQUEST URL =====
   const url = new URL(ADZUNA_BASE + page);
-  url.searchParams.set('app_id',          ADZUNA_APP_ID);
-  url.searchParams.set('app_key',         ADZUNA_APP_KEY);
+  url.searchParams.set('app_id',           ADZUNA_APP_ID);
+  url.searchParams.set('app_key',          ADZUNA_APP_KEY);
   url.searchParams.set('results_per_page', '20');
-  url.searchParams.set('what',            what);
-  url.searchParams.set('content-type',    'application/json');
-  url.searchParams.set('sort_by',         sort);
+  url.searchParams.set('what',             what);
+  url.searchParams.set('content-type',     'application/json');
+  url.searchParams.set('sort_by',          toAdzunaSort(sort));
 
-  console.log('[API Request]', { query: what, page, sort });
 
-  // ===== FETCH WITH RETRY & TIMEOUT =====
+  if (salaryMin > 0) {
+    url.searchParams.set('salary_min', String(salaryMin));
+  }
+
+  console.log('[API Request]', { what, page, sort, salaryMin });
+
   try {
-    const response = await retryFetch(async () => {
-      return Promise.race([
-        fetch(url.toString()),
-        timeout(API_TIMEOUT)
-      ]);
-    });
+    const response = await retryFetch(async () =>
+      Promise.race([fetch(url.toString()), timeout(API_TIMEOUT)])
+    );
 
-    // ===== HANDLE HTTP ERRORS =====
     if (!response.ok) {
-      const errorBody = await response.text().catch(() => '');
-      const statusText = {
+      const statusMessages = {
         400: 'Bad Request – Invalid search parameters',
         401: 'Unauthorized – Invalid API credentials',
-        403: 'Forbidden – API rate limit exceeded',
+        403: 'Forbidden – API access denied',
         404: 'Not Found – Search endpoint unavailable',
-        429: 'Too Many Requests – API rate limited. Please try again later',
+        429: 'Too Many Requests – Please try again in a moment',
         500: 'Server Error – Adzuna service temporarily unavailable',
-        503: 'Service Unavailable – Maintenance in progress'
-      }[response.status] || `HTTP ${response.status} Error`;
-
-      throw new Error(`Adzuna API Error: ${statusText}`);
+        503: 'Service Unavailable – Maintenance in progress',
+      };
+      const msg = statusMessages[response.status] || `HTTP ${response.status} Error`;
+      throw new Error(`Adzuna API Error: ${msg}`);
     }
 
-    // ===== PARSE RESPONSE =====
     const data = await response.json();
 
-    // ===== VALIDATE RESPONSE STRUCTURE =====
-    if (!data.results || !Array.isArray(data.results)) {
-      throw new Error('Invalid API response format – missing results array');
+    if (!data || !Array.isArray(data.results)) {
+      throw new Error('Invalid API response – missing results array');
     }
 
-    // ===== SAVE TO CACHE & RETURN =====
+
+    if (sort === 'az') {
+      data.results.sort((a, b) =>
+        (a.title || '').localeCompare(b.title || '')
+      );
+    }
+
     saveToCache(cacheKey, data);
-    console.log('[API Success]', { count: data.count, results: data.results.length });
+    console.log('[API Success]', { count: data.count, returned: data.results.length });
     return data;
 
   } catch (error) {
-    // ===== COMPREHENSIVE ERROR HANDLING =====
     let userMessage = 'Failed to fetch job listings. ';
-    
     if (error.message.includes('timeout')) {
-      userMessage += 'Request took too long. Please check your connection.';
+      userMessage += 'Request took too long – please check your connection.';
     } else if (error.message.includes('Failed to fetch')) {
-      userMessage += 'Network error. Please check your internet connection.';
+      userMessage += 'Network error – please check your internet connection.';
     } else if (error.message.includes('JSON')) {
       userMessage += 'Received invalid data from the server.';
     } else {
       userMessage += error.message;
     }
-
     console.error('[API Error]', error);
     throw new Error(userMessage);
   }
 }
 
-/**
- * Clear the request cache
- * Useful for forcing a fresh fetch
- */
 function clearCache() {
-  Object.keys(requestCache).forEach(key => delete requestCache[key]);
+  Object.keys(requestCache).forEach(k => delete requestCache[k]);
   console.log('[Cache Cleared]');
-}
-
-/**
- * Get cache statistics
- * @returns {object} Cache info
- */
-function getCacheStats() {
-  return {
-    entries: Object.keys(requestCache).length,
-    totalSize: JSON.stringify(requestCache).length,
-    keys: Object.keys(requestCache)
-  };
 }
