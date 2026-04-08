@@ -1,13 +1,11 @@
 'use strict';
 
-
 const ADZUNA_APP_ID  = '3586e45f';
 const ADZUNA_APP_KEY = '2bdf493f3272c77cc95b80ee76abcc7b';
 const ADZUNA_BASE    = 'https://api.adzuna.com/v1/api/jobs/gb/search/';
 const API_TIMEOUT    = 10000;
 const MAX_RETRIES    = 2;
 const RETRY_DELAY    = 1000;
-
 
 const CACHE_DURATION = 5 * 60 * 1000;
 const requestCache   = {};
@@ -49,7 +47,6 @@ async function retryFetch(fn, retries = MAX_RETRIES, delay = RETRY_DELAY) {
   }
 }
 
-
 function toAdzunaSort(sort) {
   switch (sort) {
     case 'salary-desc': return 'salary';
@@ -59,17 +56,8 @@ function toAdzunaSort(sort) {
   }
 }
 
-/**
- * Fetch job listings from Adzuna API.
- *
- @param {string} what      
- * @param {number} page      - Page number (1–50)
- * @param {string} sort      - 'relevance' | 'salary-desc' | 'date-desc' | 'az'
- * @param {number} salaryMin - Minimum salary filter (0 = any)
- * @returns {Promise<object>} Parsed response with .results array and .count
- */
 async function fetchJobs(what = 'graduate', page = 1, sort = 'relevance', salaryMin = 0) {
-  // Input validation
+  
   what      = String(what || 'graduate').trim().substring(0, 100) || 'graduate';
   page      = Math.max(1, Math.min(parseInt(page) || 1, 50));
   sort      = ['relevance', 'salary-desc', 'date-desc', 'az'].includes(sort) ? sort : 'relevance';
@@ -89,7 +77,6 @@ async function fetchJobs(what = 'graduate', page = 1, sort = 'relevance', salary
   url.searchParams.set('what',             what);
   url.searchParams.set('content-type',     'application/json');
   url.searchParams.set('sort_by',          toAdzunaSort(sort));
-
 
   if (salaryMin > 0) {
     url.searchParams.set('salary_min', String(salaryMin));
@@ -121,7 +108,6 @@ async function fetchJobs(what = 'graduate', page = 1, sort = 'relevance', salary
     if (!data || !Array.isArray(data.results)) {
       throw new Error('Invalid API response – missing results array');
     }
-
 
     if (sort === 'az') {
       data.results.sort((a, b) =>

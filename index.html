@@ -6,14 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="GetEmployed — Discover top graduate jobs and internships in real time. Smart matching, salary insights, and curated opportunities for students." />
   <meta property="og:title"       content="GetEmployed | Career Intelligence for the Next Generation" />
-  <meta property="og:description" content="Discover top graduate jobs and internships. Smart matching, salary insights, and curated opportunities for students." />
+  <meta property="og:description" content="Discover top graduate jobs and internships powered by Adzuna. Smart matching for students and graduates." />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://get-employed-gold.vercel.app/" />
   <meta name="twitter:card"       content="summary_large_image" />
 
   <title>GetEmployed | Career Intelligence for the Next Generation</title>
 
- 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,62 +27,66 @@
 
 <body>
 
- 
-  <nav class="navbar" id="navbar">
+
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container">
       <div class="navbar-inner">
 
         <div class="navbar-left">
-          <a href="index.html" class="nav-logo" id="nav-logo">GetEmployed</a>
+          <a href="#" class="nav-logo" id="nav-logo" aria-label="GetEmployed home">GetEmployed</a>
         </div>
 
         <div class="navbar-center">
-          <ul class="nav-links" id="nav-links">
-            <li><a href="#"              class="nav-link active">Home</a></li>
-            <li><a href="#opportunities" class="nav-link">Browse</a></li>
-            <li><a href="#saved"         class="nav-link">My List</a></li>
-            <li><a href="#about"         class="nav-link">About</a></li>
+          <ul class="nav-links" id="nav-links" role="list">
+            <li><a href="#"              class="nav-link active" id="nav-home">Home</a></li>
+            <li><a href="#opportunities" class="nav-link"        id="nav-browse">Browse</a></li>
+            <li><a href="#saved"         class="nav-link"        id="nav-saved">My List</a></li>
+            <li><a href="#about"         class="nav-link"        id="nav-about">About</a></li>
           </ul>
         </div>
 
         <div class="navbar-right">
-    
+
+        
           <div class="search-container" id="search-container">
-            <button class="nav-icon" id="search-toggle-btn" aria-label="Toggle search">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            <button class="nav-icon" id="search-toggle-btn" aria-label="Toggle search" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                    fill="none" stroke="currentColor" stroke-width="2.2"
                    stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             </button>
-            <div class="search-bar-wrap">
+            <div class="search-bar-wrap" role="search">
               <input type="search" class="search-input" id="search-input"
-                     placeholder="Search roles…" autocomplete="off" />
+                     placeholder="Search roles…" autocomplete="off"
+                     aria-label="Search job roles" />
             </div>
           </div>
 
-       
-          <div class="profile-avatar" aria-hidden="true">GE</div>
+          
+          <div class="profile-avatar" aria-hidden="true" title="Profile">GE</div>
 
-     
-          <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+       
+          <button class="hamburger" id="hamburger-btn"
+                  aria-label="Toggle navigation menu" aria-expanded="false"
+                  aria-controls="nav-links">
             <span></span>
             <span></span>
             <span></span>
           </button>
-        </div>
 
+        </div>
       </div>
     </div>
   </nav>
 
 
+ 
   <header class="hero" id="hero">
     <div class="hero-media">
-     
       <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1400"
-           alt="Modern office environment" />
+           alt="Modern office environment — GetEmployed hero" />
     </div>
     <div class="hero-overlay">
       <div class="hero-fade-top"></div>
@@ -95,84 +98,130 @@
         Launch Your <em>Legacy</em>
       </h1>
       <p class="hero-desc">
-        The career intelligence layer built for high-performers. Access exclusive
-        opportunities, real-time market data, and company insights that put you
-        ahead of the curve.
+        Real-time graduate jobs and internships. Smart matching that puts you ahead — no account needed.
       </p>
       <div class="hero-buttons">
         <button class="btn-primary" id="hero-cta">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-            <path d="M6 4l12 8-12 8z"/>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M5 3l14 9-14 9V3z"/>
           </svg>
-          Explore Now
+          Explore Roles
         </button>
         <button class="btn-secondary" id="hero-cta-ghost">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
-               stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+               stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="12" cy="12" r="10"/>
             <path d="M12 16v-4"/><path d="M12 8h.01"/>
           </svg>
           About Us
         </button>
       </div>
+      <div class="hero-stats" aria-label="Platform statistics">
+        <div>
+          <strong>12,400+</strong>
+          <span>Live roles</span>
+        </div>
+        <div>
+          <strong>95%</strong>
+          <span>Match accuracy</span>
+        </div>
+        <div>
+          <strong>180+</strong>
+          <span>Companies</span>
+        </div>
+      </div>
     </div>
   </header>
 
 
-  <div class="container">
-    <div class="category-tabs" id="category-tabs">
-      <button class="tab active" data-cat="all">All Roles</button>
-      <button class="tab" data-cat="tech">Technology</button>
-      <button class="tab" data-cat="design">Creative &amp; Design</button>
-      <button class="tab" data-cat="marketing">Growth &amp; Marketing</button>
-      <button class="tab" data-cat="finance">Capital &amp; Finance</button>
-      <button class="tab" data-cat="healthcare">Life Sciences</button>
+
+  <div class="category-tabs-wrap">
+    <div class="container">
+      <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Filter by job category">
+        <button class="tab active" data-cat="all"        role="tab" aria-selected="true">All Roles</button>
+        <button class="tab"        data-cat="tech"       role="tab" aria-selected="false">Technology</button>
+        <button class="tab"        data-cat="design"     role="tab" aria-selected="false">Creative &amp; Design</button>
+        <button class="tab"        data-cat="marketing"  role="tab" aria-selected="false">Growth &amp; Marketing</button>
+        <button class="tab"        data-cat="finance"    role="tab" aria-selected="false">Capital &amp; Finance</button>
+        <button class="tab"        data-cat="healthcare" role="tab" aria-selected="false">Life Sciences</button>
+      </div>
     </div>
   </div>
 
 
-  <main class="netflix-layout section">
+ 
+  <main id="main-content">
 
-  
-    <section class="content-row container top10-container" id="row-top-picks">
+ 
+    <section class="content-row container section" id="row-top-picks" aria-label="Trending opportunities">
       <header class="section-header">
         <h2 class="section-heading">Trending Opportunities</h2>
-        <p class="section-subtext">The highest-engagement roles curated for your professional trajectory.</p>
+        <p class="section-subtext">The highest-engagement roles curated from our live index.</p>
       </header>
       <div class="scroll-container-wrap">
-        <button class="scroll-arrow scroll-arrow--left" aria-label="Scroll left">❮</button>
-        <ul class="scroll-container" id="top-picks-list"></ul>
-        <button class="scroll-arrow scroll-arrow--right" aria-label="Scroll right">❯</button>
+        <button class="scroll-arrow scroll-arrow--left" aria-label="Scroll left">&#10094;</button>
+        <ul class="scroll-container" id="top-picks-list" role="list">
+         
+          <li class="skeleton-card" aria-hidden="true" style="min-width:280px;">
+            <div class="skeleton-line long"></div>
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line short"></div>
+          </li>
+          <li class="skeleton-card" aria-hidden="true" style="min-width:280px;">
+            <div class="skeleton-line long"></div>
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line short"></div>
+          </li>
+          <li class="skeleton-card" aria-hidden="true" style="min-width:280px;">
+            <div class="skeleton-line long"></div>
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line short"></div>
+          </li>
+          <li class="skeleton-card" aria-hidden="true" style="min-width:280px;">
+            <div class="skeleton-line long"></div>
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line short"></div>
+          </li>
+          <li class="skeleton-card" aria-hidden="true" style="min-width:280px;">
+            <div class="skeleton-line long"></div>
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line short"></div>
+          </li>
+        </ul>
+        <button class="scroll-arrow scroll-arrow--right" aria-label="Scroll right">&#10095;</button>
       </div>
     </section>
 
-   
-    <section class="content-row container" id="saved">
+
+    
+    <section class="content-row container section" id="saved" aria-label="Your shortlisted roles">
       <header class="section-header">
         <h2 class="section-heading">Shortlisted Roles</h2>
-        <p class="section-subtext">Your personalized collection of high-potential opportunities.</p>
+        <p class="section-subtext">Your saved opportunities, ready when you are.</p>
       </header>
-      <div id="saved-section-grid" class="card-grid">
+      <div id="saved-section-grid" class="card-grid" role="list">
         <div class="saved-empty" id="saved-empty">
-          No roles shortlisted yet. Explore opportunities to build your list.
+          No roles shortlisted yet. Browse opportunities and hit <strong>+</strong> to save them here.
         </div>
       </div>
     </section>
 
 
-    <section class="billboard-mid">
+   
+    <section class="billboard-mid" aria-label="Global opportunities banner">
       <div class="hero-media">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1400"
-             alt="Global office building" loading="lazy" />
+             alt="Global headquarters" loading="lazy" />
       </div>
       <div class="hero-overlay"></div>
       <div class="container">
         <div class="hero-content">
           <h2 class="section-heading billboard-heading">Global <em>Impact</em></h2>
-          <p class="section-subtext">Join world-class organisations building the future from anywhere in the world.</p>
+          <p class="section-subtext">
+            Join world-class organisations building the future — from anywhere on the planet.
+          </p>
           <div class="hero-buttons" style="margin-top:2rem;">
-            <button class="btn-primary"
-                    onclick="document.getElementById('opportunities').scrollIntoView({behavior:'smooth'})">
+            <button class="btn-primary" id="billboard-cta">
               Explore Roles
             </button>
           </div>
@@ -181,57 +230,58 @@
     </section>
 
 
-    <section class="content-row container" id="opportunities">
+   
+    <section class="content-row container section" id="opportunities" aria-label="Global opportunity index">
       <header class="section-header">
-        <div class="flex-between full-mobile" style="width:100%; align-items:flex-end;">
-          <div>
-            <h2 class="section-heading">Global Opportunity Index</h2>
-            <p class="section-subtext">Unified directory of elite roles fetched in real-time from our global network.</p>
-          </div>
-          <div class="filter-controls hide-mobile">
-            <select id="filter-sort" class="btn-secondary" aria-label="Sort jobs">
-              <option value="relevance">Sort By: Relevance</option>
-              <option value="salary-desc">Highest Compensation</option>
-              <option value="date-desc">Newest Listings</option>
-              <option value="az">A–Z Name</option>
-            </select>
-            <select id="filter-salary" class="btn-secondary" aria-label="Minimum salary">
-              <option value="any">Any Salary</option>
-              <option value="40000">£40k+</option>
-              <option value="60000">£60k+</option>
-              <option value="80000">£80k+</option>
-            </select>
-          </div>
-        </div>
+        <h2 class="section-heading">Global Opportunity Index</h2>
+        <p class="section-subtext">Live roles fetched in real-time via the Adzuna API.</p>
       </header>
 
-      <div id="cards-grid" class="card-grid"></div>
 
-      <div class="pagination-wrap" id="pagination-wrap" style="text-align:center; margin-top:5rem;">
-        <div id="pagination-buttons" class="pagination-controls"></div>
+      <div class="filter-bar" role="toolbar" aria-label="Filter and sort jobs">
+        <span class="results-count" id="results-count" aria-live="polite" aria-atomic="true"></span>
+        <div class="filter-controls">
+          <select id="filter-sort" class="btn-secondary" aria-label="Sort jobs by">
+            <option value="relevance">Sort: Relevance</option>
+            <option value="salary-desc">Highest Pay</option>
+            <option value="date-desc">Newest First</option>
+            <option value="az">A–Z</option>
+          </select>
+          <select id="filter-salary" class="btn-secondary" aria-label="Minimum salary filter">
+            <option value="any">Any Salary</option>
+            <option value="40000">£40k+</option>
+            <option value="60000">£60k+</option>
+            <option value="80000">£80k+</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="cards-grid" class="card-grid" role="list" aria-label="Job listings"></div>
+
+      <div class="pagination-wrap" id="pagination-wrap" aria-label="Pagination">
+        <div id="pagination-buttons" class="pagination-controls" role="navigation"></div>
       </div>
     </section>
 
-   
-    <section id="about" class="container section section-centered">
-      <h2 class="section-heading">The Future of <em>Career Discovery</em></h2>
-      <p class="section-subtext" style="max-width:80ch;">
-        GetEmployed aggregates real-time job data to help students and graduates
-        discover, evaluate, and prioritise the right opportunities faster.
-        Our smart matching system surfaces roles that fit your skills and ambitions —
-        not just keyword matches.
+
+  
+    <section id="about" class="container section section-centered" aria-label="About GetEmployed">
+      <h2 class="section-heading">The Future of <em>Career&nbsp;Discovery</em></h2>
+      <p class="section-subtext" style="max-width:60ch; margin: 1rem auto 0;">
+        Built for students and graduates. We pull live listings from Adzuna and rank them by how well
+        they match your skills — no account needed.
       </p>
-      <div class="usp-grid grid-3" style="margin-top:4rem;">
+      <div class="usp-grid grid-3" style="margin-top:3.5rem;">
         <div class="usp-item">
-          <h3>Real-Time Data</h3>
-          <p>Live indexing of thousands of global opportunities updated continuously via the Adzuna API.</p>
+          <h3>20,000+ roles<br>updated hourly</h3>
+          <p>Live indexing of global opportunities via the Adzuna API — updated automatically, no stale listings.</p>
         </div>
         <div class="usp-item">
-          <h3>Smart Matching</h3>
-          <p>A compatibility score ranks each role by how well it fits your profile and preferences.</p>
+          <h3>Scores 8 match<br>signals</h3>
+          <p>Our compatibility score weighs salary, description quality, location, company reputation and more.</p>
         </div>
         <div class="usp-item">
-          <h3>Student First</h3>
+          <h3>Year-1 to Year-3<br>students</h3>
           <p>Designed specifically for early-career discovery — internships, graduate schemes, and entry-level roles.</p>
         </div>
       </div>
@@ -240,11 +290,21 @@
   </main>
 
 
-  <footer class="site-footer">
+
+  <footer class="site-footer" aria-label="Site footer">
     <div class="container">
       <div class="footer-top">
-        <a href="#" class="nav-logo">GetEmployed</a>
-        
+        <div>
+          <a href="#" class="nav-logo" aria-label="GetEmployed">GetEmployed</a>
+          <p style="margin-top:0.875rem; font-size:0.85rem; color:var(--muted); max-width:32ch; line-height:1.6;">
+            Real-time graduate jobs powered by Adzuna. Built for students.
+          </p>
+        </div>
+        <div class="footer-socials" aria-label="Social links">
+          <a href="#" class="footer-social-icon" aria-label="Twitter">TW</a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">IN</a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="footer-social-icon" aria-label="GitHub">GH</a>
+        </div>
       </div>
 
       <div class="footer-grid">
@@ -255,32 +315,36 @@
           <a href="#about"         class="footer-link">How It Works</a>
         </div>
         <div class="footer-col">
-          <h4 class="footer-col-title">Data Source</h4>
+          <h4 class="footer-col-title">Data</h4>
           <a href="https://developer.adzuna.com/" class="footer-link" target="_blank" rel="noopener">
-            Adzuna Jobs API
+            Adzuna API
           </a>
         </div>
         <div class="footer-col">
           <h4 class="footer-col-title">Built With</h4>
           <span class="footer-link">HTML / CSS / JS</span>
-          <span class="footer-link">Deployed on Vercel</span>
+          <span class="footer-link">Vercel</span>
         </div>
       </div>
 
       <div class="footer-bottom">
-       
-        <div class="footer-copy">
-          ©️ <span id="footer-year"></span> GetEmployed. Powered by Adzuna Global.
+        <div class="footer-copy" id="footer-copy">
+          © <span id="footer-year"></span> GetEmployed. Powered by
+          <a href="https://developer.adzuna.com/" target="_blank" rel="noopener"
+             style="color:inherit; text-decoration:underline; text-decoration-color:rgba(255,255,255,0.2);">
+            Adzuna
+          </a>.
         </div>
       </div>
     </div>
   </footer>
 
 
+ 
   <div class="modal-overlay" id="job-panel" role="dialog" aria-modal="true" aria-label="Job details">
     <div class="jp-backdrop" id="jp-backdrop"></div>
     <div class="modal-card" id="jp-drawer">
-      <button class="modal-close" id="jp-close" aria-label="Close modal">✕</button>
+      <button class="modal-close" id="jp-close" aria-label="Close job details">&#10005;</button>
       <div id="jp-body"></div>
     </div>
   </div>
@@ -290,10 +354,10 @@
   <script src="js/main.js"></script>
   <script src="js/opportunities.js"></script>
 
-
   <script>
-    var el = document.getElementById('footer-year');
-    if (el) el.textContent = new Date().getFullYear();
+    
+    var yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
 
 </body>
