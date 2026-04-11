@@ -50,24 +50,42 @@
 .scroll-arrow--left  { left: 0; }
 .scroll-arrow--right { right: 0; }
 
-.top10-container .job-card {
-  min-width: 210px;
-  margin-left: 4.5rem;
+
+.top10-container {
+  gap: 16px;
+  padding: 1rem 1rem 2rem;
+  align-items: flex-end;
 }
 
+
+.top10-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-shrink: 0;
+  list-style: none;
+}
+
+
 .top10-number {
-  position: absolute;
-  left: -0.55em;
-  bottom: -0.1em;
-  font-size: clamp(7rem, 14vw, 11rem);
+  font-size: 130px;
   font-weight: 900;
   line-height: 1;
-  color: var(--bg);
-  -webkit-text-stroke: 3px rgba(255,255,255,0.12);
-  z-index: -1;
+  color: transparent;
+  -webkit-text-stroke: 2px #444;
   user-select: none;
-  font-family: var(--font-body);
   pointer-events: none;
+  font-family: var(--font-body);
+  letter-spacing: -6px;
+  flex-shrink: 0;
+  z-index: 0;
+}
+
+.top10-item .job-card {
+  min-width: 240px;
+  flex-shrink: 0;
+  margin-left: -20px;
+  z-index: 1;
 }
 
 .pagination-wrap {
@@ -230,14 +248,13 @@
 @media (max-width: 600px) {
   .page-btn { min-width: 36px; height: 36px; font-size: 0.78rem; }
 
-  .top10-container .job-card {
-    min-width: 170px;
-    margin-left: 3rem;
+  .top10-number {
+    font-size: 90px;
+    letter-spacing: -4px;
   }
 
-  .top10-number {
-    font-size: clamp(4.5rem, 11vw, 7rem);
-    -webkit-text-stroke: 2px rgba(255,255,255,0.1);
+  .top10-item .job-card {
+    min-width: 200px;
   }
 
   .scroll-arrow { width: 38px; }

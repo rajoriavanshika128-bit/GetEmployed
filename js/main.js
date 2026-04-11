@@ -2,7 +2,6 @@
 
 (function () {
 
-  
   const navbar          = document.getElementById('navbar');
   const hamburgerBtn    = document.getElementById('hamburger-btn');
   const navLinks        = document.getElementById('nav-links');
@@ -12,6 +11,11 @@
   const heroCTA         = document.getElementById('hero-cta');
   const heroGhostCTA    = document.getElementById('hero-cta-ghost');
   const heroTitle       = document.getElementById('hero-heading');
+  const themeToggleBtn  = document.getElementById('theme-toggle-btn');
+  const themeIconDark   = document.getElementById('theme-icon-dark');
+  const themeIconLight  = document.getElementById('theme-icon-light');
+
+
 
   
   function onScroll() {

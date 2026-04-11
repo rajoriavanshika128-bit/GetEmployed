@@ -231,3 +231,27 @@
     transform: none;
   }
 }
+
+
+[data-theme="light"] .site-footer {
+  background: #f1f5f9;
+  border-top-color: var(--stroke);
+}
+[data-theme="light"] .footer-col-title { color: rgba(15,23,42,0.4); }
+[data-theme="light"] .footer-link { color: rgba(15,23,42,0.55); }
+[data-theme="light"] .footer-link:hover { color: #0f172a; }
+[data-theme="light"] .footer-social-icon { color: rgba(15,23,42,0.35); }
+[data-theme="light"] .footer-social-icon:hover { color: #0f172a; }
+[data-theme="light"] .footer-bottom { border-top-color: var(--stroke); }
+[data-theme="light"] .footer-copy   { color: rgba(15,23,42,0.35); }
+
+[data-theme="light"] .usp-item {
+  background: var(--surface);
+  border-color: var(--stroke);
+}
+[data-theme="light"] .usp-item:hover {
+  background: var(--surface-raised);
+  border-color: rgba(79,70,229,0.25);
+}
+[data-theme="light"] .usp-item h3 { color: #0f172a; }
+[data-theme="light"] .usp-item p  { color: rgba(15,23,42,0.55); }
