@@ -1,14 +1,9 @@
 'use strict';
-
-
-
 const SAVED_KEY = 'getemployed_saved_v2';
-
 function loadSavedJobs() {
   try { return JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'); }
   catch { return []; }
 }
-
 const state = {
   query:        '',
   trendingJobs: [],
@@ -22,7 +17,6 @@ const state = {
   totalPages:   1,
   savedJobs:    loadSavedJobs(),
 };
-
 const searchInput      = document.getElementById('search-input');
 const filterSalary     = document.getElementById('filter-salary');
 const filterSort       = document.getElementById('filter-sort');
@@ -36,7 +30,6 @@ const jpBackdrop       = document.getElementById('jp-backdrop');
 const jpClose          = document.getElementById('jp-close');
 const jpBody           = document.getElementById('jp-body');
 const resultsCount     = document.getElementById('results-count');
-
 const FALLBACK_JOBS = [
   { id:'fb1',  title:'Graduate Software Engineer', company:{display_name:'Accenture'},       location:{display_name:'London, UK'},         category:{label:'IT Jobs'},          salary_min:38000, salary_max:45000, description:'Build and maintain scalable software solutions as part of our award-winning graduate programme. You will work with senior engineers across cloud, AI, and enterprise platforms.',  redirect_url:'#', created:'2026-04-01T00:00:00Z' },
   { id:'fb2',  title:'Junior Data Analyst',        company:{display_name:'HSBC'},            location:{display_name:'Manchester, UK'},      category:{label:'Finance & Accounting'}, salary_min:32000, salary_max:40000, description:'Analyse large datasets using SQL, Python and Tableau to support business decisions. Great opportunity for a data-driven recent graduate to grow in a global bank.',        redirect_url:'#', created:'2026-04-02T00:00:00Z' },
@@ -54,7 +47,6 @@ const FALLBACK_JOBS = [
   { id:'fb14', title:'Investment Banking Analyst', company:{display_name:'Goldman Sachs'},  location:{display_name:'London, UK'},         category:{label:'Finance & Accounting'}, salary_min:65000, salary_max:85000, description:'Support M&A and capital markets transactions at one of the world\'s leading investment banks. Intensive two-year analyst programme with excellent exit opportunities.',  redirect_url:'#', created:'2026-04-07T00:00:00Z' },
   { id:'fb15', title:'HR Graduate Trainee',        company:{display_name:'PwC'},            location:{display_name:'Bristol, UK'},        category:{label:'HR & Recruitment'},     salary_min:29000, salary_max:35000, description:'Develop your HR career at PwC, one of the Big Four professional services firms. Rotations across talent acquisition, L&D, employee relations, and HR operations.',   redirect_url:'#', created:'2026-03-31T00:00:00Z' },
 ];
-
 function escapeHtml(str) {
   return String(str ?? '')
     .replace(/&/g, '&amp;')
@@ -63,11 +55,9 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
-
 function isSaved(id) {
   return state.savedJobs.some(j => j.id === String(id));
 }
-
 function normalizeCategory(label) {
   const l = (label || '').toLowerCase();
   if (['it','tech','software','engineer','data','developer','cloud','cyber'].some(k => l.includes(k))) return 'tech';
@@ -76,7 +66,6 @@ function normalizeCategory(label) {
   if (['health','care','pharma','science','bio','nurse','medic'].some(k => l.includes(k))) return 'healthcare';
   return 'other';
 }
-
 function computeScore(job) {
   let score = 50;
   if (job.salaryMin > 0)             score += 15;
@@ -84,7 +73,6 @@ function computeScore(job) {
   if (job.company !== 'Organization') score += 15;
   return Math.min(score, 99);
 }
-
 function mapJob(raw, idx) {
   const categoryNorm = normalizeCategory(raw.category?.label || '');
   const job = {
@@ -103,7 +91,6 @@ function mapJob(raw, idx) {
   job.matchScore = computeScore(job);
   return job;
 }
-
 function formatSalary(job) {
   if (job.salaryMin > 0) {
     const fmt = n => n >= 1000 ? `£${Math.round(n / 1000)}k` : `£${n}`;
@@ -113,7 +100,6 @@ function formatSalary(job) {
   }
   return null;
 }
-
 function toggleSave(job) {
   const idx = state.savedJobs.findIndex(j => j.id === job.id);
   if (idx === -1) {
@@ -124,21 +110,17 @@ function toggleSave(job) {
   localStorage.setItem(SAVED_KEY, JSON.stringify(state.savedJobs));
   refreshAllUI();
 }
-
 function jobHue(id) {
   const hues = [230, 260, 290, 320, 170, 200, 30, 0];
   const sum  = [...String(id)].reduce((s, c) => s + c.charCodeAt(0), 0);
   return hues[sum % hues.length];
 }
-
 function shortLocation(loc) {
   if (!loc) return 'Remote';
   if (loc.toLowerCase().includes('remote')) return 'Remote';
   if (loc.toLowerCase().includes('hybrid')) return 'Hybrid';
   return loc.split(',')[0].trim();
 }
-
-
 const filterByQuery = query => jobs => {
   if (!query) return jobs;
   const q = query.toLowerCase();
@@ -148,17 +130,14 @@ const filterByQuery = query => jobs => {
     )
   );
 };
-
 const filterByCategory = category => jobs => {
   if (!category || category === 'all') return jobs;
   return jobs.filter(job => job.categoryNorm === category);
 };
-
 const filterBySalary = minSalary => jobs => {
   if (!minSalary || minSalary <= 0) return jobs;
   return jobs.filter(job => job.salaryMin >= minSalary || job.salaryMax >= minSalary);
 };
-
 const sortJobs = sortKey => jobs => {
   const copy = [...jobs];
   if (sortKey === 'salary-desc') return copy.sort((a, b) => (b.salaryMin || 0) - (a.salaryMin || 0));
@@ -167,11 +146,9 @@ const sortJobs = sortKey => jobs => {
   if (sortKey === 'match-desc')  return copy.sort((a, b) => b.matchScore - a.matchScore);
   return copy;
 };
-
 function pipeline(jobs, ...transforms) {
   return transforms.reduce((currentJobs, transform) => transform(currentJobs), jobs);
 }
-
 function getFilteredBrowseJobs() {
   return pipeline(
     state.browseJobs,
@@ -181,64 +158,53 @@ function getFilteredBrowseJobs() {
     sortJobs(state.sort)
   );
 }
-
-
 function buildCard(job) {
   const saved   = isSaved(job.id);
   const salary  = formatSalary(job);
   const hue     = jobHue(job.id);
   const initial = (job.company || 'G').charAt(0).toUpperCase();
   const loc     = shortLocation(job.location);
-
   const card = document.createElement('article');
   card.className  = 'job-card';
   card.dataset.id = job.id;
   card.setAttribute('role', 'listitem');
   card.setAttribute('tabindex', '0');
   card.setAttribute('aria-label', `${job.role} at ${job.company}`);
-
   card.innerHTML = `
     <div class="card-inner-pad">
       <div class="card-header-row">
-        <div class="company-logo"
-             style="background: hsl(${hue},65%,48%);"
-             aria-hidden="true">${escapeHtml(initial)}</div>
         <button class="az-save-btn${saved ? ' saved' : ''}"
                 aria-label="${saved ? 'Remove from shortlist' : 'Add to shortlist'}"
                 aria-pressed="${saved}">
           ${saved ? '✓' : '+'}
         </button>
       </div>
-
       <div class="card-title">${escapeHtml(job.role)}</div>
       <div class="card-company-loc">${escapeHtml(job.company)} · ${escapeHtml(loc)}</div>
-
       <div class="card-tags">
         <span class="tag-pill">${escapeHtml(job.category)}</span>
         ${salary ? `<span class="tag-pill">${escapeHtml(salary)}</span>` : ''}
         <span class="tag-pill location">${escapeHtml(loc)}</span>
       </div>
-
-      <div class="match-score">${job.matchScore}% Match</div>
     </div>
   `;
-
   card.querySelector('.az-save-btn').addEventListener('click', e => {
     e.stopPropagation();
     toggleSave(job);
   });
-
-  card.addEventListener('click', () => openPanel(job.id));
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.job-card.active').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    openPanel(job.id);
+  });
   card.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       openPanel(job.id);
     }
   });
-
   return card;
 }
-
 function renderSkeletons() {
   if (!cardsGrid) return;
   cardsGrid.innerHTML = Array(9).fill(`
@@ -250,21 +216,16 @@ function renderSkeletons() {
     </div>
   `).join('');
 }
-
 function renderBrowseResults() {
   if (!cardsGrid) return;
   cardsGrid.innerHTML = '';
-
   if (state.loading) return;
-
   const jobs = getFilteredBrowseJobs();
-
   if (resultsCount) {
     resultsCount.textContent = jobs.length > 0
       ? `${jobs.length} role${jobs.length !== 1 ? 's' : ''} found`
       : '';
   }
-
   if (jobs.length === 0) {
     cardsGrid.innerHTML = `
       <div class="empty-state">
@@ -276,17 +237,14 @@ function renderBrowseResults() {
     renderPagination(0);
     return;
   }
-
   const fragment = document.createDocumentFragment();
   jobs.forEach(job => fragment.appendChild(buildCard(job)));
   cardsGrid.appendChild(fragment);
   renderPagination(jobs.length);
 }
-
 function renderTrending() {
   if (!topPicksList) return;
   topPicksList.innerHTML = '';
-
   if (state.trendingJobs.length === 0) {
     topPicksList.innerHTML = `
       <li style="padding:2.5rem; color:var(--muted); text-align:center; list-style:none; font-size:0.9rem; min-width:280px;">
@@ -294,30 +252,24 @@ function renderTrending() {
       </li>`;
     return;
   }
-
   const fragment = document.createDocumentFragment();
   state.trendingJobs.forEach((job, i) => {
-  
     const li = document.createElement('li');
     li.className = 'top10-item';
     li.setAttribute('role', 'listitem');
-
     const num = document.createElement('span');
     num.className = 'top10-number';
     num.setAttribute('aria-hidden', 'true');
     num.textContent = String(i + 1);
-
     li.appendChild(num);
     li.appendChild(buildCard(job));
     fragment.appendChild(li);
   });
   topPicksList.appendChild(fragment);
 }
-
 function renderSavedSection() {
   if (!savedSectionGrid) return;
   savedSectionGrid.innerHTML = '';
-
   if (state.savedJobs.length === 0) {
     savedSectionGrid.innerHTML = `
       <div class="saved-empty" id="saved-empty">
@@ -326,29 +278,23 @@ function renderSavedSection() {
     `;
     return;
   }
-
   const fragment = document.createDocumentFragment();
   state.savedJobs.forEach(job => fragment.appendChild(buildCard(job)));
   savedSectionGrid.appendChild(fragment);
 }
-
 function renderPagination(visibleCount) {
   if (!pagButtons) return;
   pagButtons.innerHTML = '';
-
   const max = state.totalPages;
   const cur = state.page;
-
   if (max <= 1 || visibleCount === 0) {
     if (pagWrap) pagWrap.hidden = true;
     return;
   }
   if (pagWrap) pagWrap.hidden = false;
-
   const scrollToSection = () => {
     document.getElementById('opportunities')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-
   const addBtn = (p, label, isActive = false, isDisabled = false) => {
     const btn = document.createElement('button');
     btn.className   = `page-btn${isActive ? ' active' : ''}`;
@@ -364,7 +310,6 @@ function renderPagination(visibleCount) {
     }
     pagButtons.appendChild(btn);
   };
-
   const addDots = () => {
     const span = document.createElement('span');
     span.className   = 'pag-dots';
@@ -372,44 +317,34 @@ function renderPagination(visibleCount) {
     span.setAttribute('aria-hidden', 'true');
     pagButtons.appendChild(span);
   };
-
   addBtn(cur - 1, '←', false, cur === 1);
-
   const start = Math.max(1, cur - 2);
   const end   = Math.min(max, cur + 2);
-
   if (start > 1) { addBtn(1, '1'); if (start > 2) addDots(); }
   for (let i = start; i <= end; i++) addBtn(i, String(i), i === cur);
   if (end < max)  { if (end < max - 1) addDots(); addBtn(max, String(max)); }
-
   addBtn(cur + 1, '→', false, cur === max);
 }
-
 function refreshAllUI() {
   renderBrowseResults();
   renderTrending();
   renderSavedSection();
 }
-
 function resetFilters() {
   state.category = 'all';
   state.salary   = 0;
   state.sort     = 'relevance';
   state.query    = '';
-
   if (filterSort)   filterSort.value   = 'relevance';
   if (filterSalary) filterSalary.value = 'any';
   if (searchInput)  searchInput.value  = '';
-
   document.querySelectorAll('.tab[data-cat]').forEach(t => {
     const isAll = t.dataset.cat === 'all';
     t.classList.toggle('active', isAll);
     t.setAttribute('aria-selected', String(isAll));
   });
-
   fetchBrowse(1);
 }
-
 async function fetchTrending() {
   try {
     const data = await fetchJobs('graduate intern', 1, 'relevance', 0);
@@ -423,16 +358,13 @@ async function fetchTrending() {
     renderTrending();
   }
 }
-
 async function fetchBrowse(page = 1) {
   if (state.loading) return;
   state.loading = true;
   state.page    = page;
   state.error   = null;
-
   renderSkeletons();
   if (resultsCount) resultsCount.textContent = 'Loading…';
-
   try {
     const data = await fetchJobs(
       state.query || (state.category && state.category !== 'all' ? state.category : 'graduate'),
@@ -440,66 +372,52 @@ async function fetchBrowse(page = 1) {
       state.sort,
       state.salary
     );
-
     const trendingIds = new Set(state.trendingJobs.map(j => j.id));
-
     state.browseJobs = (data.results || [])
       .map((raw, idx) => mapJob(raw, idx + (page - 1) * 20))
       .filter(job => !trendingIds.has(job.id));
-
     state.totalPages = Math.min(Math.ceil((data.count || 0) / 20), 50);
     state.loading    = false;
-
     renderBrowseResults();
-
   } catch (err) {
     state.loading = false;
     state.error   = err.message;
     console.warn('[fetchBrowse] API unavailable — using fallback data:', err.message);
-
     state.browseJobs = FALLBACK_JOBS.map(raw => mapJob(raw, raw.id));
     state.totalPages = 1;
-
     if (resultsCount) resultsCount.textContent = '';
     renderBrowseResults();
   }
 }
-
 function openPanel(id) {
   const sid = String(id);
   const job = [...state.browseJobs, ...state.trendingJobs, ...state.savedJobs]
     .find(j => j.id === sid);
   if (!job || !jpBody) return;
-
   const saved   = isSaved(job.id);
   const salary  = formatSalary(job);
   const loc     = shortLocation(job.location);
-  const hue     = jobHue(job.id);
-  const initial = (job.company || 'G').charAt(0).toUpperCase();
-
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const bgL     = isLight ? '96%' : '10%';
+  const gradL   = isLight ? '92%' : '14%';
+  const accentRed = '358, 92%';
   jpBody.innerHTML = `
-    <div class="modal-hero" style="background: hsl(${hue},45%,12%);">
+    <div class="modal-hero" style="background: hsl(${accentRed}, ${bgL});">
       <div style="
         position:absolute; inset:0; z-index:1;
         display:flex; align-items:center; justify-content:center;
-        background: linear-gradient(135deg, hsl(${hue},60%,15%), hsl(${hue + 40},50%,12%));
+        background: linear-gradient(135deg, hsla(${accentRed}, ${gradL}, 1), hsla(${accentRed}, ${bgL}, 1));
       ">
-        <div style="
-          width:80px; height:80px; border-radius:18px;
-          background: hsl(${hue},65%,48%);
-          display:flex; align-items:center; justify-content:center;
-          font-size:2rem; font-weight:700; color:#fff;
-          box-shadow: 0 8px 32px hsl(${hue},65%,20%);
-        ">${escapeHtml(initial)}</div>
       </div>
       <div class="modal-hero-overlay" style="z-index:2;">
         <h2 style="
           font-family: var(--font-heading);
           font-style:italic;
-          font-size: clamp(1.4rem, 3vw, 2rem);
-          color:#fff;
+          font-size: clamp(1.4rem, 3vw, 2.2rem);
+          color: var(--text);
           margin-bottom:1rem;
           line-height:1.1;
+          font-weight: 800;
         ">${escapeHtml(job.role)}</h2>
         <div class="hero-buttons">
           <a class="btn-primary"
@@ -514,10 +432,7 @@ function openPanel(id) {
     </div>
     <div class="modal-body">
       <div class="modal-left">
-        <div class="match-score" style="margin-bottom:1.25rem; font-size:0.9rem;">
-          ${job.matchScore}% Compatibility Score
-        </div>
-        <p style="color:rgba(255,255,255,0.75); line-height:1.75; font-size:0.92rem;">
+        <p style="color:var(--muted); line-height:1.75; font-size:0.92rem;">
           ${escapeHtml(job.description)}
         </p>
       </div>
@@ -531,28 +446,24 @@ function openPanel(id) {
       </div>
     </div>
   `;
-
   document.getElementById('jp-save-modal')?.addEventListener('click', () => {
     toggleSave(job);
     openPanel(id);
   });
-
   jobPanel?.classList.add('active');
   document.body.style.overflow = 'hidden';
   jpClose?.focus();
 }
-
 function closePanel() {
   jobPanel?.classList.remove('active');
+  document.querySelectorAll('.job-card.active').forEach(c => c.classList.remove('active'));
   document.body.style.overflow = '';
 }
-
 searchInput?.addEventListener('input', () => {
   state.query = searchInput.value.trim();
   state.page  = 1;
   renderBrowseResults();
 });
-
 searchInput?.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
     state.query = searchInput.value.trim();
@@ -560,36 +471,29 @@ searchInput?.addEventListener('keydown', e => {
     fetchBrowse(1);
   }
 });
-
 filterSort?.addEventListener('change', () => {
   state.sort = filterSort.value;
   state.page = 1;
-  renderBrowseResults();
+  fetchBrowse(1);
 });
-
 filterSalary?.addEventListener('change', () => {
   state.salary = parseInt(filterSalary.value) || 0;
   state.page   = 1;
-  renderBrowseResults();
+  fetchBrowse(1);
 });
-
 document.addEventListener('categorychange', e => {
   state.category = e.detail.category || 'all';
   state.page     = 1;
   fetchBrowse(1);
 });
-
 jpClose?.addEventListener('click', closePanel);
 jpBackdrop?.addEventListener('click', closePanel);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closePanel();
 });
-
 document.getElementById('billboard-cta')?.addEventListener('click', () => {
   document.getElementById('opportunities')?.scrollIntoView({ behavior: 'smooth' });
 });
-
-
 (function init() {
   renderSavedSection();
   fetchTrending()
