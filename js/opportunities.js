@@ -71,7 +71,6 @@ function isSaved(id) {
 function normalizeCategory(label) {
   const l = (label || '').toLowerCase();
   if (['it','tech','software','engineer','data','developer','cloud','cyber'].some(k => l.includes(k))) return 'tech';
-  if (['design','creative','art','media','ux','ui'].some(k => l.includes(k))) return 'design';
   if (['market','sales','growth','brand','content','social'].some(k => l.includes(k))) return 'marketing';
   if (['financ','bank','account','invest','audit'].some(k => l.includes(k))) return 'finance';
   if (['health','care','pharma','science','bio','nurse','medic'].some(k => l.includes(k))) return 'healthcare';
@@ -436,7 +435,7 @@ async function fetchBrowse(page = 1) {
 
   try {
     const data = await fetchJobs(
-      state.query || 'graduate',
+      state.query || (state.category && state.category !== 'all' ? state.category : 'graduate'),
       state.page,
       state.sort,
       state.salary
@@ -577,7 +576,7 @@ filterSalary?.addEventListener('change', () => {
 document.addEventListener('categorychange', e => {
   state.category = e.detail.category || 'all';
   state.page     = 1;
-  renderBrowseResults();
+  fetchBrowse(1);
 });
 
 jpClose?.addEventListener('click', closePanel);

@@ -6,6 +6,7 @@
   background: #000;
   display: flex;
   align-items: center;
+  margin-top: -6rem;
 }
 
 .billboard-mid .hero-media {
@@ -18,7 +19,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center 15%;
   filter: brightness(0.75) contrast(1.05);
   transition: transform 10s linear;
 }
@@ -255,3 +256,23 @@
 }
 [data-theme="light"] .usp-item h3 { color: #0f172a; }
 [data-theme="light"] .usp-item p  { color: rgba(15,23,42,0.55); }
+
+
+[data-theme="light"] .billboard-mid .hero-overlay {
+  background: 
+    linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 40%, transparent 100%),
+    linear-gradient(to top, rgba(255,255,255,0.8) 0%, transparent 50%) !important;
+}
+[data-theme="light"] .billboard-mid .section-heading {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+[data-theme="light"] .billboard-mid .section-heading em {
+    color: #dc2626 !important; /* Powerful red */
+}
+[data-theme="light"] .billboard-mid .section-subtext {
+  color: #3d3d3d !important;
+}
+[data-theme="light"] .billboard-mid .hero-media img {
+    filter: brightness(1) contrast(1) !important;
+}
