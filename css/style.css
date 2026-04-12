@@ -12,6 +12,7 @@
   --accent-mid:      #F5B421;
   --font-heading:    'Montserrat', sans-serif;
   --font-body:       'Inter', sans-serif;
+  --font-display:    'Instrument Serif', serif;
   --h1:              clamp(2.8rem, 8vw, 5.5rem);
   --h2:              clamp(1.8rem, 4vw, 3rem);
   --h3:              clamp(1.2rem, 2.5vw, 1.8rem);
@@ -881,123 +882,115 @@ select.btn-secondary option {
   cursor: pointer;
   background: var(--surface);
   border-radius: var(--radius-card);
-  border: 2px solid rgba(255,255,255,0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border: 1.5px solid rgba(255,255,255,0.06);
+  transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
   overflow: hidden;
-}
-.job-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(229,9,20,0.25);
-  border-color: rgba(229,9,20,0.3);
-}
-.job-card.active {
-  border: 2px solid #E50914;
-  box-shadow: 0 0 20px rgba(229,9,20,0.6), inset 0 0 20px rgba(229,9,20,0.2);
-}
-.card-inner-pad {
-  padding: 1.25rem;
   display: flex;
   flex-direction: column;
+}
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 44px rgba(229,9,20,0.22);
+  border-color: rgba(229,9,20,0.35);
+}
+.card-inner-pad {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
   height: 100%;
 }
-.company-logo {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+.card-header-top {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 17px;
-  color: #fff;
-  flex-shrink: 0;
-  letter-spacing: 0;
-}
-.card-header-row {
-  display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 1rem;
 }
-.card-title {
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--text);
-  line-height: 1.35;
-  margin: 0.85rem 0 0.3rem;
+.card-role-display {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--accent) !important;
+  line-height: 1.1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.2s ease;
 }
-.card-company-loc {
-  font-size: 0.82rem;
-  color: var(--muted);
-  margin-bottom: 0.85rem;
-}
-.card-tags {
+.card-meta-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.35rem;
-  margin-bottom: 1rem;
 }
-.tag-pill {
-  font-size: 0.7rem;
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.65);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 0.22rem 0.65rem;
-  border-radius: var(--radius-pill);
-  white-space: nowrap;
-  font-weight: 500;
-}
-.tag-pill.location {
-  color: rgba(137,170,204,0.85);
-  border-color: rgba(137,170,204,0.2);
-  background: rgba(137,170,204,0.07);
-}
-.match-score {
-  font-size: 0.82rem;
+.card-category-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-weight: 700;
-  color: #4ade80;
+  color: var(--muted);
+  opacity: 0.85;
+}
+.card-company-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.card-footer-row {
+  margin-top: auto;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-}
-.match-score::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 6px #4ade80;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 .az-save-btn {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.5);
-  font-size: 1rem;
-  transition: all 0.2s ease;
-  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.6);
+  font-size: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
+  background: rgba(255,255,255,0.05);
   flex-shrink: 0;
+  margin-top: -2px;
 }
 .az-save-btn:hover {
-  border-color: rgba(255,255,255,0.5);
+  transform: scale(1.1);
+  border-color: var(--accent);
   color: #fff;
-  background: rgba(255,255,255,0.1);
+  background: rgba(229,9,20,0.1);
 }
 .az-save-btn.saved {
   background: var(--accent);
   border-color: transparent;
   color: #fff;
+  box-shadow: 0 4px 12px rgba(229,9,20,0.3);
+}
+[data-theme="light"] .job-card {
+  border-color: rgba(0,0,0,0.06);
+}
+[data-theme="light"] .card-footer-row {
+  border-top-color: rgba(0,0,0,0.05);
+}
+[data-theme="light"] .az-save-btn {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.1);
+  color: rgba(0,0,0,0.4);
+}
+[data-theme="light"] .az-save-btn:hover {
+  color: #E50914;
+  background: rgba(229,9,20,0.08);
+}
+[data-theme="light"] .card-role-display {
+  color: #ca1a1a !important;
 }
 .saved-empty {
   grid-column: 1 / -1;

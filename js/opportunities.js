@@ -172,19 +172,21 @@ function buildCard(job) {
   card.setAttribute('aria-label', `${job.role} at ${job.company}`);
   card.innerHTML = `
     <div class="card-inner-pad">
-      <div class="card-header-row">
+      <div class="card-header-top">
+        <span class="card-role-display">${escapeHtml(job.role)}</span>
         <button class="az-save-btn${saved ? ' saved' : ''}"
                 aria-label="${saved ? 'Remove from shortlist' : 'Add to shortlist'}"
                 aria-pressed="${saved}">
           ${saved ? '✓' : '+'}
         </button>
       </div>
-      <div class="card-title">${escapeHtml(job.role)}</div>
-      <div class="card-company-loc">${escapeHtml(job.company)} · ${escapeHtml(loc)}</div>
-      <div class="card-tags">
-        <span class="tag-pill">${escapeHtml(job.category)}</span>
-        ${salary ? `<span class="tag-pill">${escapeHtml(salary)}</span>` : ''}
-        <span class="tag-pill location">${escapeHtml(loc)}</span>
+      <div class="card-meta-row">
+        <span class="card-category-tag">${escapeHtml(job.category)}</span>
+        <span class="card-company-text">${escapeHtml(job.company)}</span>
+      </div>
+      <div class="card-footer-row">
+        <span class="card-loc-text">${escapeHtml(loc)}</span>
+        ${salary ? `<span class="card-salary-text">${escapeHtml(salary)}</span>` : ''}
       </div>
     </div>
   `;
