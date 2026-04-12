@@ -12,6 +12,18 @@
   const themeToggleBtn  = document.getElementById('theme-toggle-btn');
   const themeIconDark   = document.getElementById('theme-icon-dark');
   const themeIconLight  = document.getElementById('theme-icon-light');
+  function throttle(callback, limit) {
+    let waiting = false;
+    return function () {
+      if (!waiting) {
+        callback.apply(this, arguments);
+        waiting = true;
+        setTimeout(function () {
+          waiting = false;
+        }, limit);
+      }
+    };
+  }
   function onScroll() {
     const y = window.scrollY;
     if (y > 60) {
@@ -41,7 +53,7 @@
     const activeNav = document.getElementById(navMap[currentId]);
     if (activeNav) activeNav.classList.add('active');
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', throttle(onScroll, 30), { passive: true });
   onScroll(); 
   heroCTA?.addEventListener('click', () => {
     document.getElementById('opportunities')
@@ -141,8 +153,8 @@
       leftBtn.style.visibility  = atStart ? 'hidden' : 'visible';
       rightBtn.style.visibility = atEnd   ? 'hidden' : 'visible';
     }
-    container.addEventListener('scroll', updateArrows, { passive: true });
-    window.addEventListener('resize',   updateArrows, { passive: true });
+    container.addEventListener('scroll', throttle(updateArrows, 60), { passive: true });
+    window.addEventListener('resize',   throttle(updateArrows, 100), { passive: true });
     updateArrows();
   });
   document.querySelectorAll('.tab[data-cat]').forEach(tab => {
