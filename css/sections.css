@@ -286,6 +286,7 @@
     height: clamp(280px, 75vw, 460px);
     align-items: flex-end;
     padding-bottom: 3rem;
+    margin-top: 3.5rem !important;
   }
 
   .billboard-mid .hero-overlay {
@@ -384,7 +385,7 @@
   text-shadow: none !important;
 }
 [data-theme="light"] .billboard-mid .section-heading em {
-    color: #dc2626 !important; /* Powerful red */
+    color: #dc2626 !important; 
 }
 [data-theme="light"] .billboard-mid .section-subtext {
   color: #3d3d3d !important;

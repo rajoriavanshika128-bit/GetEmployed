@@ -6,9 +6,11 @@
   <meta name="description" content="GetEmployed — Discover top graduate jobs and internships in real time. Smart matching, salary insights, and curated opportunities for students." />
   <meta property="og:title"       content="GetEmployed | Career Intelligence for the Next Generation" />
   <meta property="og:description" content="Discover top graduate jobs and internships powered by Adzuna. Smart matching for students and graduates." />
+  <meta property="og:image"       content="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://get-employed-gold.vercel.app/" />
   <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:image"      content="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" />
   <title>GetEmployed | Career Intelligence for the Next Generation</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,9 +54,11 @@
               </svg>
             </button>
             <div class="search-bar-wrap" role="search">
-              <input type="search" class="search-input" id="search-input"
-                     placeholder="Search roles…" autocomplete="off"
-                     aria-label="Search job roles" />
+              <form style="margin:0;width:100%;" onsubmit="return false;">
+                <input type="search" class="search-input" id="search-input"
+                       placeholder="Search roles…" autocomplete="off"
+                       aria-label="Search job roles" />
+              </form>
             </div>
           </div>
           <button class="nav-icon theme-toggle" id="theme-toggle-btn"

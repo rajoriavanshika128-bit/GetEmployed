@@ -1,83 +1,62 @@
-# GetEmployed — Premium Career Intelligence 💼
+# GetEmployed: Opportunity Search Platform
 
-![GetEmployed Demo](https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200)
+A professional job discovery and career intelligence platform designed for graduates and early-career professionals. This application provides real-time access to live job listings, simplified filtering, and personalized shortlisting capabilities.
 
-**GetEmployed** is a modern, high-fidelity job discovery platform built for the next generation of graduates and young professionals. Powered by the Adzuna Jobs API, the platform provides real-time access to thousands of live graduate roles and internships. The project features a premium glassmorphic UI, lightning-fast client-side data pipelines, and intelligent matching logic that puts candidates first.
+## Project Overview
 
-This repository serves as the central codebase, meticulously engineered entirely in Vanilla Javascript, CSS3, and Semantic HTML5—with absolutely no frameworks.
+GetEmployed is built as a single-page application (SPA) focused on high-performance data handling and accessible user interface design. The platform leverages the Adzuna Global Jobs API to provide verified graduate roles, internships, and entry-level positions. 
 
----
+The primary technical objective of this project is to demonstrate proficiency in contemporary frontend development without the use of external frameworks or libraries, strictly utilizing Vanilla JavaScript, CSS3, and Semantic HTML5.
 
-## ✨ Core Features
+## Core Features
 
-1. **Intelligent Search**
-   A real-time search engine using algorithmic filtering that combs through roles, companies, locations, and categories instantly.
-2. **Advanced Data Pipeline (HOFs)**
-   All search, sort, and filtering relies on a custom Array Higher Order Function (HOF) `pipeline()`. The data logic chains `.filter()`, `.some()`, and `.sort()` through a `.reduce()` pipeline for exceptional performance without a single `for` or `while` loop.
-3. **Data-Driven Filtering & Sorting**
-   Instantly sort live jobs by Relevance, Best Match, Highest Pay, Date, or Alphabetically. Filter by custom salary thresholds and dynamic categories.
-4. **My List (Shortlisting)**
-   A robust state management feature utilizing `localStorage` allows users to shortlist and persist their favorite job listings locally, creating a personalised jobs dashboard.
-5. **Fluid Dark & Light Modes**
-   Full dual-theme support using native CSS deep-token architecture, seamlessly toggling the entire interface without reloading.
-6. **Robust Error Handling & Fallbacks**
-   Graceful degradation is baked in. If the live Adzuna API is inaccessible or rate-limited, the application automatically pivots to a highly realistic fallback dataset, ensuring an uninterrupted zero-error user experience.
+### Data-Driven Search and Discovery
+Users can navigate thousands of roles via a real-time search engine. The search logic indexes job titles, company names, locations, and categories to ensure accurate result retrieval.
 
----
+### Advanced Functional Data Logic
+The application utilizes a functional programming approach for all internal data operations. Searching, filtering, and sorting are executed through a custom-built processing pipeline that exclusively uses Array Higher-Order Functions (HOFs) including `.filter()`, `.map()`, `.reduce()`, and `.sort()`. This architecture ensures modularity and optimal performance without traditional iterative loops.
 
-## 🛠 Technology Stack
+### Personalized Shortlisting
+A state-persistent dashboard allows users to save specific job roles for later review. This functionality is implemented using the Browser LocalStorage API, ensuring that a user's shortlist remains intact across sessions and page refreshes.
 
-This project strictly adheres to native technologies and avoids frameworks.
+### Responsive Theme Architecture
+The platform features a comprehensive light and dark theme system. It is built using a CSS Custom Property (variables) architecture that enables seamless transitions across the entire interface. The theme preference is automatically saved to provide a consistent user experience.
 
-*   **HTML5:** Fully semantic, ARIA-compliant markup.
-*   **CSS3:** Apple-inspired frosted glassmorphism, fluid `clamp()` typography, CSS custom properties (variables), native CSS Grid and Flexbox architecture.
-*   **Vanilla JS (ES6+):** Async/Await, Array HOF Pipelines, Fetch API, DOM manipulation.
-*   **API Backbone:** [Adzuna Jobs API](https://developer.adzuna.com/) (`v1/api/jobs/gb/search/1`).
+## Technical Architecture
 
----
+### Performance Optimization
+*   **Event Throttling:** Continuous events such as window scrolling and resizing are throttled to reduce CPU overhead and prevent layout thrashing.
+*   **Request Caching:** A temporary local cache is implemented for API requests to minimize redundant network traffic and improve response times during navigation.
+*   **Intersection Observer:** The application uses the Intersection Observer API for scroll-revealed animations, ensuring performance remains stable by only animating elements when they enter the viewport.
 
-## 🚀 Setup & Execution Instructions
+### API Integration and Resilience
+*   **Fetch Lifecycle:** Native `fetch()` is used to communicate with the Adzuna API, incorporating comprehensive error handling for network failures or rate limits.
+*   **Exponential Backoff:** The application includes a retry mechanism with exponential backoff to handle intermittent server issues gracefully.
+*   **Data Fallbacks:** In the event of persistent API unavailability, the application seamlessly pivots to a local mock dataset to maintain full functionality and a zero-error user state.
 
-Because GetEmployed uses pure vanilla technologies without build steps, it requires virtually zero setup and is ready to deploy natively.
+## Installation and Execution
 
-1.  **Clone the Repository**
-    ```sh
-    git clone https://github.com/yourusername/get-employed.git
+The project requires zero build steps and can be run in any modern web browser.
+
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/your-username/get-employed.git
     cd get-employed
     ```
 
-2.  **Run the Project Locally**
-    You can run this project locally using any live server.
-    *   **Using VS Code:** Install the *Live Server* extension, open `index.html`, right-click and select "Open with Live Server".
-    *   **Using Python (macOS/Linux):**
-        ```sh
-        python3 -m http.server 8000
-        ```
-        Then, navigate to `http://localhost:8000` in your browser.
-    *   **Using Node.js:**
-        ```sh
-        npx serve .
-        ```
+2.  **Run Locally:**
+    Open `index.html` using a local development server. 
+    *   **VS Code:** Use the Live Server extension.
+    *   **Python:** Run `python3 -m http.server 8000`.
+    *   **Node.js:** Run `npx serve .`.
 
-3.  **API Tokens (Optional)**
-    The project comes pre-configured with active API keys provided in `js/adzuna.js`.
+## Milestone Compliance Checklist
+
+This project successfully fulfills the requirements for the following milestones:
+
+*   **Milestone 1:** Defined project scope, integrated public API, and established foundational repository structure.
+*   **Milestone 2:** Implemented dynamic API integration using `fetch()`, managed async loading states with skeleton screens, and ensured 100% responsiveness across mobile, tablet, and desktop viewports.
+*   **Milestone 3:** Developed the three required core features (Search, Filter, Sort) alongside additional bonus features (Theme Toggling and Shortcuts). All data operations strictly adhere to the use of Array Higher-Order Functions.
 
 ---
-
-## 🎓 Grading & Milestone Compliance Check
-
-This project has been engineered to explicitly pass all academic milestone requirements:
-
-*   [x] **Milestone 1:** Purpose defined, API integrated (Adzuna), comprehensive README, and modular file structure.
-*   [x] **Milestone 2:** Uses `fetch()`, dynamic rendering, complete error handling, graceful fallback data, and is fully responsive (320px+ layout integrity).
-*   [x] **Milestone 3 (Core Features):** 
-    *   Search implemented perfectly using `.filter()` and `.some()`.
-    *   All Filters implemented using HOFs.
-    *   Sorting implemented via `.sort()` HOFs.
-    *   Button interactions (Shortlisting) wired to `localStorage`.
-    *   Dark / Light mode seamlessly swapping CSS `--variables` and persisting via state.
-*   [x] **Best Practices:** Absolutely *zero* `for` or `while` loops in data manipulation. Clean styling with `clamp()` typography, accessible ARIA focus states, and zero console errors.
-
----
-
-*Designed and Developed with ♠️ for the Web.*
+© 2026 GetEmployed Platform. Developed as a Web Application Programming Project.

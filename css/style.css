@@ -811,15 +811,17 @@ select.btn-secondary option {
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2.5rem;
+  padding: 4px; 
 }
 .category-tabs-wrap::-webkit-scrollbar { display: none; }
 .category-tabs {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0;
+  gap: 0.5rem;
   padding: 6px;
+  min-width: max-content;
   width: 100%;
   background: rgba(255,255,255,0.03);
   border: 2px solid #000000;
@@ -828,12 +830,12 @@ select.btn-secondary option {
 .tab {
   flex: 1;
   text-align: center;
-  padding: 10px 24px;
+  padding: 10px 20px;
   border-radius: var(--radius-pill);
   border: none;
   background: transparent;
   color: rgba(255,255,255,0.5);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 500;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -850,6 +852,12 @@ select.btn-secondary option {
   border-color: transparent;
   box-shadow: 0 2px 12px rgba(229,9,20,0.35);
   font-weight: 600;
+}
+@media (max-width: 600px) {
+  .tab {
+    font-size: 0.88rem;
+    padding: 8px 12px;
+  }
 }
 .card-grid {
   display: grid;

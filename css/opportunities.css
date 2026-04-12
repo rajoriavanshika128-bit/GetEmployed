@@ -68,29 +68,29 @@
 
 
 .top10-number {
-  font-size: 130px;
+  font-size: 160px;
   font-weight: 900;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 2px #444;
+  -webkit-text-stroke: 2px rgba(255,255,255,0.25);
   user-select: none;
   pointer-events: none;
   font-family: var(--font-body);
-  letter-spacing: -6px;
+  letter-spacing: -4px;
   flex-shrink: 0;
   z-index: 0;
 }
 
 [data-theme="light"] .top10-number {
-  -webkit-text-stroke: none;
+  -webkit-text-stroke: 2px rgba(0,0,0,0.08);
   color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .top10-item .job-card {
   min-width: 240px;
   flex-shrink: 0;
-  margin-left: -20px;
+  margin-left: -5px;
   z-index: 1;
 }
 
@@ -255,8 +255,8 @@
   .page-btn { min-width: 36px; height: 36px; font-size: 0.78rem; }
 
   .top10-number {
-    font-size: 90px;
-    letter-spacing: -4px;
+    font-size: 110px;
+    letter-spacing: -2px;
   }
 
   .top10-item .job-card {
