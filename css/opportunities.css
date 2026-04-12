@@ -81,6 +81,12 @@
   z-index: 0;
 }
 
+[data-theme="light"] .top10-number {
+  -webkit-text-stroke: none;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .top10-item .job-card {
   min-width: 240px;
   flex-shrink: 0;
