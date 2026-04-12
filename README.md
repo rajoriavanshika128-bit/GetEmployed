@@ -34,22 +34,6 @@ The platform features a comprehensive light and dark theme system. It is built u
 *   **Exponential Backoff:** The application includes a retry mechanism with exponential backoff to handle intermittent server issues gracefully.
 *   **Data Fallbacks:** In the event of persistent API unavailability, the application seamlessly pivots to a local mock dataset to maintain full functionality and a zero-error user state.
 
-## Installation and Execution
-
-The project requires zero build steps and can be run in any modern web browser.
-
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/your-username/get-employed.git
-    cd get-employed
-    ```
-
-2.  **Run Locally:**
-    Open `index.html` using a local development server. 
-    *   **VS Code:** Use the Live Server extension.
-    *   **Python:** Run `python3 -m http.server 8000`.
-    *   **Node.js:** Run `npx serve .`.
-
 ## Milestone Compliance Checklist
 
 This project successfully fulfills the requirements for the following milestones:
